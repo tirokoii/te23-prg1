@@ -14,9 +14,13 @@ kebab-case
 PascalCase
 
 {} --> måsvingar
+
 [] --> square bracket /block
+
 "", '' --> fnuttar
+
 =  --> tilldelar en plats för ett värde
+
 == --> Kollar om två värden är lika med / om sant
 
 input --> 
