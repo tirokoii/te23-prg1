@@ -1,5 +1,5 @@
 
-namn = input("Write your name:") 
+namn = input("Write your name: ") 
 
 important = "The sign we use for strings is called fnuttar."
 
