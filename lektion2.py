@@ -4,7 +4,7 @@ print("Hello and welcome to my program")
 
 while True:
 
-    firstName = input("Please write your name: ")
+    firstName = input("Please write your first name: ")
 
     if firstName.isalpha():
         print(f"Good day {firstName}. Thank you for gracing me with your presence.") 
@@ -12,6 +12,8 @@ while True:
     else:
         print("Please answer with letters...")
 
+
+print("I would like to know more about you. I promise im not gonna steal you information!")
 
 while True:
 
@@ -22,8 +24,9 @@ while True:
         break
     else:
         print("Please answer with letters...")
-        
+
 while True:
+    
     age = input("Please write your age in numbers: ")
 
     if age.isdigit():
@@ -38,4 +41,4 @@ while True:
     else:
         print("Please write your age using only numbers...")
         
-print(f"Thank for participating in this program {firstName} {lastName} the {age} year old.")
+print(f"Thank for participating in this program {firstName} {lastName} the {age} year old!")
