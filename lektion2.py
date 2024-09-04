@@ -2,14 +2,14 @@
 
 print("Hello and welcome to my program")
 
-while True:
+while True: #Creates a loop
 
     firstName = input("Please write your first name: ")
 
-    if firstName.isalpha():
+    if firstName.isalpha(): #Checks if firstName is written with letters
         print(f"Good day {firstName}. Thank you for gracing me with your presence.") 
-        break
-    else:
+        break #Breaks the loop
+    else: #If the firstName isn't written with letters continues the loop
         print("Please answer with letters...")
 
 
@@ -29,7 +29,7 @@ while True:
     
     age = input("Please write your age in numbers: ")
 
-    if age.isdigit():
+    if age.isdigit(): #Checks if age is written with numbers
         age = int(age)
         if age < 67:
             print(f"Wow {age}! Soon you will retire.")
