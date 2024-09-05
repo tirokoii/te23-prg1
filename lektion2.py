@@ -31,6 +31,7 @@ while True:
 
     if age.isdigit(): #Checks if age is written with numbers
         age = int(age)
+        
         if age < 67:
             print(f"Wow {age}! Soon you will retire.")
         elif age > 67 and age < 200:
