@@ -15,26 +15,31 @@ playerTwoScore = 0
 playerOneName = input("Player 1 name: ")
 playerTwoName = input("Player 2 name: ")
 
-while playerOneScore < 3:
+while True:
 
     playerOne = randint(1, 6)
     playerTwo = randint(1, 6)
 
-    if playerOne > playerTwo:
-        rollResults = playerOne - playerTwo
-    elif playerOne < playerTwo:
-        rollResults = playerTwo - playerOne
+    if playerOneScore == 3:
+        break
+    elif playerTwoScore == 3:
+        break
     else:
-        rollResults = 0
+        if playerOne > playerTwo:
+            rollResults = playerOne - playerTwo
+        elif playerOne < playerTwo:
+            rollResults = playerTwo - playerOne
+        else:
+            rollResults = 0
 
-    if playerOne > playerTwo:
-        print(f"{playerOneName} won with {rollResults} more points than {playerTwoName}")
-        playerOneScore += 1
-    elif playerOne < playerTwo:
-        print(f"{playerTwoName} won with {rollResults} more points than {playerOneName}")
-        playerTwoScore += 1
-    else:
-        print(f"It was a draw between {playerOneName} and {playerTwoName}")
+        if playerOne > playerTwo:
+            print(f"{playerOneName} won with {rollResults} more points than {playerTwoName}")
+            playerOneScore += 1
+        elif playerOne < playerTwo:
+            print(f"{playerTwoName} won with {rollResults} more points than {playerOneName}")
+            playerTwoScore += 1
+        else:
+            print(f"It was a draw between {playerOneName} and {playerTwoName}")
 
     #play_game = input("Do you want to play again? {yes/no} ")
 if playerOneScore > playerTwoScore:
