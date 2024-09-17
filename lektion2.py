@@ -30,7 +30,7 @@ while True:
     age = input("Please write your age in numbers: ")
 
     if age.isdigit(): #Checks if age is written with numbers
-        age = int(age)
+        age = int(age) #Changes age to integer
         
         if age < 67:
             print(f"Wow {age}! Soon you will retire.")
