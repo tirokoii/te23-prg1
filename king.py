@@ -78,7 +78,6 @@ playGame = input("Do you want to play again? [yes/no]: ")
 
 
 #To do:
-
 #Choose amount of rounds
 #Choose between different dices. Fix to a specific set of dices.
 
