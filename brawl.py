@@ -16,55 +16,113 @@
 from random import randint
 
 print("Hello and welcome to the amazing brawl dice game!")
-print("In this game you'll get to choose a class and name for your character.")
+print("In this game you'll get to choose a class and name for your character and then you'll fight \1")
 
-playerOneName = input("Player 1 please write your name: ")
+playerOneName = input("Player 1 please write your name: \n")
 
 playerOneLife = 10
 playerTwoLife = 10
+
+playerTwo = False
 
 game = True
 gameRound = 0
 playGame = "yes"
 
-knightRole = randint(1, 5) #Rolls chance, if rolls under or equals to 1 then it happens 
-priestRole = randint(1, 5)
-banditRole = randint(1, 5)
-
-
 
 while True:
-    playerTwoName = input("Is there an second player? yes/no: ")
+    
+    playerTwoName = input("Is there an second player? yes/no: \n")
 
     if playerTwoName.lower() == "yes":
-
-        playerTwoName = input("Player 2 please write your name: ")
+        playerTwoName = input("Player 2 please write your name: \n")
+        playerTwo = True
         break
     elif playerTwoName.lower() == "no":
         playerTwoName = "computer"
+        playerTwo = False
         break
     else:
         print("Please write y or n")
+    
+    if playerTwoName.lower() == "computer":
+        computerClass = randint(1, 4)
+
+        if computerClass == 1:
+            computerClass = "priest"
+        elif computerClass == 2:
+            computerClass = "knight"
+        elif computerClass == 3:
+            computerClass = "bandit"
+        elif computerClass == 4:
+            computerClass = "noClass"
+
+        roleChoiceOne = input("Player one do you want to choose an class? yes/no ")
+        if roleChoiceOne.lower() == "yes":
+            print("\nThere are 3 different classes to choose from. \n")
+            print("knight: Has a 10% CHANCE to dodge or take 1 extra damage for running into the opponent.")
+            print("bandit: Has a 10% CHANCE to steal the others win or loss.")
+            print("priest: Has a 10% CHANCE to heal it self or heal the opponent. \n")
+            print("If you don't want a class write in none below. ")
+
+            input("Please write which class you'll like to be: \n")
+        elif roleChoice.lower() == "no":
+            roleChoice = "none"
+        else:
+            print("Not a valid class.")
+
+        roleChoiceTwo = input("Player one do you want to choose an class? yes/no ")
+        if playerTwo == True:
+            if roleChoiceTwo.lower() == "yes":
+                print("\nThere are 3 different classes to choose from. \n")
+                print("knight: Has a 10% CHANCE to dodge or take 1 extra damage for running into the opponent.")
+                print("bandit: Has a 10% CHANCE to steal the others win or loss.")
+                print("priest: Has a 10% CHANCE to heal it self or heal the opponent. \n")
+                print("If you don't want a class write in none below. ")
+
+                roleChoiceTwo = input("Please write which class you'll like to be: \n")
+                if roleChoiceTwo == "knight" or "bandit" or "priest":
+                    print("Ok")
+        elif roleChoiceTwo.lower() == "no":
+            roleChoiceTwo = "none"
+        else:
+            print("Not a valid class.")
 
 while playGame.lower() == "yes":
 
+    priestHealOne = (1, 10)
+    knightBlockOne = (1, 10)
+    banditStealOne = (1, 10)
+    noAbility = (1)
+
+    priestHealTwo = (1, 10)
+    knightBlockTwo = (1, 10)
+    banditStealTwo = (1, 10)
+    noAbility = (1)
+
     while game == True:
         gameRound += 1
-        gameRoundAnn = print(f"You have now completed {gameRound} rounds!")
         playerOneRoll = randint(1, 12)
         playerTwoRoll = randint(1, 12)
 
+        if gameRound == 1:
+            print(f"You have now completed {gameRound} round!")
+        elif gameRound > 1:
+            print(f"You have now completed {gameRound} rounds!")
+             
+
         if playerOneRoll > playerTwoRoll:
+            
             playerTwoLife -= 1
             print(f"Player two lost and now has {playerTwoLife} lives left.")
-            input("")
+            input("Press enter")
         elif playerOneRoll < playerTwoRoll:
             playerOneLife -= 1
             print(f"Player One lost and now has {playerOneLife} lives left.")
-            input("")
+            input("Press enter")
         else:
             print("It was a tie. Good luck in the next round.")
-            input("")
+            input("Press enter")
 
         if playerOneLife == 0:
             print(f"Good work {playerTwoName} you won against {playerOneName}!")

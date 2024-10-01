@@ -12,8 +12,8 @@ from random import randint
 playerOneScore = 0
 playerTwoScore = 0
 gameRound = 0
+allowedDices = ["4", "6", "8", "10", "12", "20"]
 
-allowedDices = [4, 6, 8, 10, 12, 20]
 playGame = "yes"
 
 playerOneName = input("Player 1 name: ")
@@ -35,7 +35,7 @@ while playGame.lower() == "yes":
 
             diceSideChoice = input("please choose between the dices, 4, 6, 8, 10, 12, 20: ")
 
-            if diceSideChoice == 4 or 6 or 8 or 10 or 12 or 20:
+            if diceSideChoice in allowedDices:
                 diceSideChoice = int(diceSideChoice) #Makes dice choice into integer
                 break
             else:
@@ -64,10 +64,10 @@ while playGame.lower() == "yes":
             else:
                 print(f"It was a draw between {playerOneName} and {playerTwoName}")
 
-            if playerOneScore >= rounds:
+            if playerOneScore >= rounds - 1:
                 print(f"Congrats {playerOneName} won the game!")
                 playGame = "no"
-            elif playerTwoScore >= rounds:
+            elif playerTwoScore >= rounds - 1:
                 print(f"Congrats {playerTwoName} won the game!")
                 playGame = "no"
             elif gameRound >= rounds:
