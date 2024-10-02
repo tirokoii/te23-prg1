@@ -145,6 +145,38 @@ while playGame.lower() == "yes":
         banditStealTwo = (1, 10)
         noAbility = (1)
 
+        if roleChoiceOne == "priest":
+            if priestHealOne == "2":
+                print(f"{playerOneName} is attempting to put up an healing spell")
+                print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                playerOneLife += 1
+                print(f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
+            elif priestHealOne == 3:
+                print(f"{playerOneName} is attempting to put up an healing spell")
+                print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
+                playerTwoLife += 1
+                print(f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
+                print(f"{playerTwoLife} now has {playerTwoLife} lives")
+        elif roleChoiceOne == "knight":
+            if playerOneRoll < playerTwoRoll:
+                if knightBlockOne == 4:
+                    playerOneLife += 1
+                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
+                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                    print(f"{playerOneName} successfully blocked the attack!")
+                elif knightBlockOne == 5:
+                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
+                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                    print(f"A loud bonk kan be heard as {playerOneName} first drops the shield on their toe and {playerTwoName} attacks, hitting the other players head!")
+            elif playerOneRoll == playerTwoRoll:
+                if knightBlockOne and knightBlockTwo == 4:
+                    print(f"{playerTwo} charges against {playerOneName} with his shield!")
+                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                    print(f"{playerOneName} and {playerTwoName} collides")
+                elif knightBlockOne == 5:
+                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
+                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+
         if gameRound == 1:
             print(f"You have now completed {gameRound} round!")
         elif gameRound > 1:
