@@ -13,8 +13,8 @@
 #Create an loop for player 2
 #Create an loop for game = True
 
-#How roles?
-#
+# To next time: Make list for weapons that get randomly chosen.
+# Fix the not a valid class message. Aka 
 
 from random import randint
 
@@ -36,7 +36,6 @@ yesNo = ["yes", "no"]
 roleChoiceOne = 0
 roleChoiceTwo = 0
 
-
 while True:
     
     playerTwoName = input("Is there an second player? yes/no: \n")
@@ -44,31 +43,34 @@ while True:
     if playerTwoName.lower() == "yes":
         playerTwoName = input("Player 2 please write your name: \n")
         playerTwo = True
-        break
     elif playerTwoName.lower() == "no":
+        print("\nYou'll now be playing with a computer.")
         playerTwoName = "computer"
         playerTwo = False
-        break
     else:
-        print("Please write y or n")
+        print("Please write yes or no")
     
     if playerTwoName.lower() == "computer":
-        computerClass = randint(1, 4)
+        computerClassRan = randint(1, 4)
 
-        if computerClass == 1:
-            computerClass = "priest"
-        elif computerClass == 2:
-            computerClass = "knight"
-        elif computerClass == 3:
-            computerClass = "bandit"
-        elif computerClass == 4:
-            computerClass = "noClass"
+        if computerClassRan == 1:
+            roleChoiceTwo = "priest"
+            break
+        elif computerClassRan == 2:
+            roleChoiceTwo = "knight"
+            break
+        elif computerClassRan == 3:
+            roleChoiceTwo = "bandit"
+            break
+        elif computerClassRan == 4:
+            roleChoiceTwo = "none"
+            break
 
 
 
 while roleChoiceOne == 0:
 
-    roleChoiceOne = input("Player 1 do you want to choose an class? yes/no ")
+    roleChoiceOne = input("\nPlayer 1 do you want to choose an class? yes/no\n")
 
     if roleChoiceOne in yesNo:
         if roleChoiceOne == yesNo:
@@ -94,7 +96,7 @@ while roleChoiceOne == 0:
             elif roleChoiceOne.lower() == "no":
                 roleChoiceOne = "none"
           #  else:
-             #   print("Not a valid class.")
+           #     print("Not a valid class.")
     else:
         print("Please write yes or no")
         roleChoiceOne = 0
@@ -105,7 +107,7 @@ while roleChoiceTwo == 0:
     if roleChoiceTwo == yesNo:
         roleChoiceTwo = 0
     else:
-        roleChoiceTwo = input("Player 2 do you want to choose an class? yes/no ")
+        roleChoiceTwo = input("\nPlayer 2 do you want to choose an class? yes/no\n")
 
     if roleChoiceTwo in yesNo:
         while roleChoiceTwo in yesNo:
@@ -131,51 +133,17 @@ while roleChoiceTwo == 0:
 while playGame.lower() == "yes":
 
     while game == True:
-        gameRound += 1
-        playerOneRoll = randint(1, 12)
-        playerTwoRoll = randint(1, 12)
+        playerOneRoll = randint(1, 20)
+        playerTwoRoll = randint(1, 20)
 
-        priestHealOne = (1, 10) # 2 is heal and 3 is fail,
-        knightBlockOne = (1, 10) # 4 is block and 5 is fail,
-        banditStealOne = (1, 10) # 6 and 7 is steal,
-        noAbility = (1)
+        priestHealOne = randint(1, 10) # 2 is heal and 3 is fail,
+        knightBlockOne = randint(1, 10) # 4 is block and 5 is fail,
+        banditStealOne = randint(1, 10) # 6 and 7 is steal and 8 if fail
 
-        priestHealTwo = (1, 10) 
-        knightBlockTwo = (1, 10)
-        banditStealTwo = (1, 10)
-        noAbility = (1)
+        priestHealTwo = randint(1, 10) 
+        knightBlockTwo = randint(1, 10)
+        banditStealTwo = randint(1, 10)
 
-        if roleChoiceOne == "priest":
-            if priestHealOne == "2":
-                print(f"{playerOneName} is attempting to put up an healing spell")
-                print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                playerOneLife += 1
-                print(f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
-            elif priestHealOne == 3:
-                print(f"{playerOneName} is attempting to put up an healing spell")
-                print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
-                playerTwoLife += 1
-                print(f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
-                print(f"{playerTwoLife} now has {playerTwoLife} lives")
-        elif roleChoiceOne == "knight":
-            if playerOneRoll < playerTwoRoll:
-                if knightBlockOne == 4:
-                    playerOneLife += 1
-                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
-                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                    print(f"{playerOneName} successfully blocked the attack!")
-                elif knightBlockOne == 5:
-                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
-                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                    print(f"A loud bonk kan be heard as {playerOneName} first drops the shield on their toe and {playerTwoName} attacks, hitting the other players head!")
-            elif playerOneRoll == playerTwoRoll:
-                if knightBlockOne and knightBlockTwo == 4:
-                    print(f"{playerTwo} charges against {playerOneName} with his shield!")
-                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                    print(f"{playerOneName} and {playerTwoName} collides")
-                elif knightBlockOne == 5:
-                    print(f"{playerTwo} charges against {playerOneName} with a killing intent!")
-                    print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
 
         if gameRound == 1:
             print(f"You have now completed {gameRound} round!")
@@ -183,23 +151,203 @@ while playGame.lower() == "yes":
             print(f"You have now completed {gameRound} rounds!")       
 
         if playerOneRoll > playerTwoRoll:
-            
+            print(f"{playerOneName} begins to charge against {playerTwoName}!")
+            gameRound += 1
+
+            if roleChoiceOne == "priest":
+                if priestHealOne == 2:
+                        print(f"{playerOneName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                        playerOneLife += 1
+                        print(f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
+                elif priestHealOne == 3:
+                    print(f"{playerOneName} is attempting to put up an healing spell")
+                    print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                    playerTwoLife += 1
+                    print(f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
+                    print(f"{playerTwoName} now has {playerTwoLife} lives")
+
+            elif roleChoiceOne == "knight":
+                if playerOneRoll < playerTwoRoll:
+                    if knightBlockOne == 4:
+                        playerOneLife += 1
+                        print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"{playerOneName} successfully blocked the attack!")
+                    elif knightBlockOne == 5:
+                        print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"A loud bonk echoes throughout the battleground, {playerOneName} is attacked by {playerTwoName} who bonks their head hard!")
+                elif playerOneRoll == playerTwoRoll:
+                    if knightBlockOne and knightBlockTwo == 4:
+                        playerOneLife -= 1
+                        playerTwoLife -= 1
+                        print(f"{playerTwoName} charges against {playerOneName} with their shield!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"{playerOneName} and {playerTwoName} collides, both takes 1 damage! {playerOneName} has {playerOneLife} and {playerTwoName} has {playerTwoLife}.")
+
+            elif roleChoiceOne == "bandit":   
+                        
+                        if banditStealOne == 6 or banditStealOne == 7:
+                            print(f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
+                            print(f"{playerOneName} successfully stole {playerTwoName}'s roll!")
+                            banditRoll = playerOneRoll
+                            playerOneRoll = playerTwoRoll
+                            playerTwoRoll = banditRoll
+                        elif banditStealOne == 8:
+                            print(f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
+                            print(f"{playerOneName} fails to steal from the opponent")
+
+            if roleChoiceTwo == "priest":
+                if priestHealTwo == 2:
+                        print(f"{playerTwoName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
+                        playerTwoLife += 1
+                        print(f"{playerTwoName} successfully healed them self. They now have {playerTwoLife} lives")
+                elif priestHealTwo == 3:
+                    print(f"{playerTwoName} is attempting to put up an healing spell")
+                    print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                    playerOneLife += 1
+                    print(f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
+                    print(f"{playerOneName} now has {playerOneLife} lives")
+
+            elif roleChoiceTwo == "knight":
+                if playerTwoRoll > playerOneRoll:
+                    if knightBlockTwo == 4:
+                        playerTwoLife += 1
+                        print(f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"{playerTwoName} successfully blocked the attack!")
+                    elif knightBlockTwo == 5:
+                        print(f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"A loud bonk echoes throughout the battleground, {playerTwoName} is attacked by {playerOneName} who bonks their head hard!")
+                elif playerOneRoll == playerTwoRoll:
+                    if knightBlockOne and knightBlockTwo == 4:
+                        playerOneLife -= 1
+                        playerTwoLife -= 1
+                        print(f"{playerOneName} charges against {playerTwoName} with their shield!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"{playerTwoName} and {playerOneName} collides, both takes 1 damage! {playerTwoName} has {playerTwoLife} and {playerOneName} has {playerOneLife}.")
+
+            elif roleChoiceTwo == "bandit":   
+                        if banditStealTwo == 6 or banditStealTwo == 7:
+                            print(f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
+                            print(f"{playerTwoName} successfully stole {playerOneName}'s roll!")
+                            banditRoll = playerTwoRoll
+                            playerTwoRoll = playerOneRoll
+                            playerOneRoll = banditRoll
+                        elif banditStealTwo == 8:
+                            print(f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
+                            print(f"{playerTwoName} fails to steal from the opponent")
+
             playerTwoLife -= 1
             print(f"Player 2 lost and now has {playerTwoLife} lives left.")
             input("Press enter")
         elif playerOneRoll < playerTwoRoll:
+            gameRound += 1
+
+            if roleChoiceOne == "priest":
+                if priestHealOne == 2:
+                        print(f"{playerOneName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                        playerOneLife += 1
+                        print(f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
+                elif priestHealOne == 3:
+                    print(f"{playerOneName} is attempting to put up an healing spell")
+                    print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                    playerTwoLife += 1
+                    print(f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
+                    print(f"{playerTwoName} now has {playerTwoLife} lives")
+
+            elif roleChoiceOne == "knight":
+                if playerOneRoll < playerTwoRoll:
+                    if knightBlockOne == 4:
+                        playerOneLife += 1
+                        print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"{playerOneName} successfully blocked the attack!")
+                    elif knightBlockOne == 5:
+                        print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"A loud bonk echoes throughout the battleground, {playerOneName} is attacked by {playerTwoName} who bonks their head hard!")
+                elif playerOneRoll == playerTwoRoll:
+                    if knightBlockOne and knightBlockTwo == 4:
+                        playerOneLife -= 1
+                        playerTwoLife -= 1
+                        print(f"{playerTwoName} charges against {playerOneName} with their shield!")
+                        print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                        print(f"{playerOneName} and {playerTwoName} collides, both takes 1 damage! {playerOneName} has {playerOneLife} and {playerTwoName} has {playerTwoLife}.")
+
+            elif roleChoiceOne == "bandit":   
+                        
+                        if banditStealOne == 6 or banditStealOne == 7:
+                            print(f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
+                            print(f"{playerOneName} successfully stole {playerTwoName}'s roll!")
+                            banditRoll = playerOneRoll
+                            playerOneRoll = playerTwoRoll
+                            playerTwoRoll = banditRoll
+                        elif banditStealOne == 8:
+                            print(f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
+                            print(f"{playerOneName} fails to steal from the opponent")
+
+            if roleChoiceTwo == "priest":
+                if priestHealTwo == 2:
+                        print(f"{playerTwoName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
+                        playerTwoLife += 1
+                        print(f"{playerTwoName} successfully healed them self. They now have {playerTwoLife} lives")
+                elif priestHealTwo == 3:
+                    print(f"{playerTwoName} is attempting to put up an healing spell")
+                    print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                    playerOneLife += 1
+                    print(f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
+                    print(f"{playerOneName} now has {playerOneLife} lives")
+
+            elif roleChoiceTwo == "knight":
+                if playerTwoRoll < playerOneRoll:
+                    if knightBlockTwo == 4:
+                        playerTwoLife += 1
+                        print(f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"{playerTwoName} successfully blocked the attack!")
+                    elif knightBlockTwo == 5:
+                        print(f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"A loud bonk echoes throughout the battleground, {playerTwoName} is attacked by {playerOneName} who bonks their head hard!")
+                elif playerOneRoll == playerTwoRoll:
+                    if knightBlockOne and knightBlockTwo == 4:
+                        playerOneLife -= 1
+                        playerTwoLife -= 1
+                        print(f"{playerOneName} charges against {playerTwoName} with their shield!")
+                        print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                        print(f"{playerTwoName} and {playerOneName} collides, both takes 1 damage! {playerTwoName} has {playerTwoLife} and {playerOneName} has {playerOneLife}.")
+
+            elif roleChoiceTwo == "bandit":   
+                        if banditStealTwo == 6 or banditStealTwo == 7:
+                            print(f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
+                            print(f"{playerTwoName} successfully stole {playerOneName}'s roll!")
+                            banditRoll = playerTwoRoll
+                            playerTwoRoll = playerOneRoll
+                            playerOneRoll = banditRoll
+                        elif banditStealTwo == 8:
+                            print(f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
+                            print(f"{playerTwoName} fails to steal from the opponent")
+ 
             playerOneLife -= 1
             print(f"Player 1 lost and now has {playerOneLife} lives left.")
             input("Press enter")
+
         else:
-            print("It was a tie. Good luck in the next round.")
+            gameRound += 1
+            print("Both players tried to attack each other, but it seems like luck was on no ones side. I wish you the best of luck in the next round!")
             input("Press enter")
 
         if playerOneLife == 0:
-            print(f"Good work {playerTwoName} you won against {playerOneName}!")
+            print(f"In a harsh battle {playerOneName} persisted and won. Congratulations to your victory over {playerTwoName}!")
             game = False
         elif playerTwoLife == 0:
-            print(f"Good work {playerOneName} you won against {playerTwoName}")
+            print(f"In a harsh battle {playerOneName} persisted and won. Congratulations to your victory over {playerTwoName}!")
             game = False
 
     playGame = input("Would you like to play again? yes/no: ")
