@@ -13,13 +13,15 @@
 #Create an loop for player 2
 #Create an loop for game = True
 
-# To next time: Make list for weapons that get randomly chosen.
-# Fix the not a valid class message. Aka 
+# To next time: Make list for weapons that get randomly chosen - Fixed
+# Fix the not a valid class message. - Fixed. 
+#Fix play game again
 
 from random import randint
+import random, time
 
 print("Hello and welcome to the amazing brawl dice game!")
-print("In this game you'll get to choose a class and name for your character and then you'll fight \1")
+print("In this game you'll get to choose a class and name for your character and then you'll fight \003")
 
 playerOneName = input("Player 1 please write your name: \n")
 
@@ -32,9 +34,12 @@ game = True
 gameRound = 0
 playGame = "yes"
 roles = ["knight", "priest", "bandit"]
+randomWeapon = ["sword", "gummy duck", "axe", "bone", "Spear", "cat", "lollipop", "shield", "pistol", "hammer", "scythe", "bow"]
+weapon = random.choice(randomWeapon)
 yesNo = ["yes", "no"]
 roleChoiceOne = 0
 roleChoiceTwo = 0
+roleWrong = True
 
 while True:
     
@@ -43,38 +48,39 @@ while True:
     if playerTwoName.lower() == "yes":
         playerTwoName = input("Player 2 please write your name: \n")
         playerTwo = True
+        break
     elif playerTwoName.lower() == "no":
         print("\nYou'll now be playing with a computer.")
         playerTwoName = "computer"
         playerTwo = False
+        break
     else:
         print("Please write yes or no")
     
-    if playerTwoName.lower() == "computer":
-        computerClassRan = randint(1, 4)
+if playerTwoName.lower() == "computer":
+    computerClassRan = randint(1, 4)
 
-        if computerClassRan == 1:
-            roleChoiceTwo = "priest"
-            break
-        elif computerClassRan == 2:
-            roleChoiceTwo = "knight"
-            break
-        elif computerClassRan == 3:
-            roleChoiceTwo = "bandit"
-            break
-        elif computerClassRan == 4:
-            roleChoiceTwo = "none"
-            break
+    if computerClassRan == 1:
+        roleChoiceTwo = "priest"
+        
+    elif computerClassRan == 2:
+        roleChoiceTwo = "knight"
+        
+    elif computerClassRan == 3:
+        roleChoiceTwo = "bandit"
+        
+    elif computerClassRan == 4:
+        roleChoiceTwo = "none"
+        
 
 
 
 while roleChoiceOne == 0:
 
     roleChoiceOne = input("\nPlayer 1 do you want to choose an class? yes/no\n")
+    time.sleep(1)
 
     if roleChoiceOne in yesNo:
-        if roleChoiceOne == yesNo:
-            roleChoiceOne = 0
 
         while roleChoiceOne in yesNo:
             if roleChoiceOne.lower() == "yes":
@@ -84,19 +90,23 @@ while roleChoiceOne == 0:
                 print("priest: Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
                 print("If you don't want a class write in none below. ")
 
-                roleChoiceOne = input("Please write which class you'll like to be: \n")
-                if roleChoiceOne in roles:
-                    print("Ok, fantastic! \n")
-                elif roleChoiceOne.lower() == "no":
-                    roleChoiceOne = "none"
-                else:
-                    print("Not a valid class.")
-                    roleChoiceOne = 1
+                while roleWrong == True: 
+                    roleChoiceOne = input("Please write which class you'll like to be: \n")
+                    if roleChoiceOne in roles:
+                        print("Ok, fantastic! \n")
+                        time.sleep(1)
+                        roleWrong = False
+                    elif roleChoiceOne.lower() == "no":
+                        roleChoiceOne = "none"
+                        roleWrong = False
+                    else:
+                        print("Not a valid class.\n")
+                        time.sleep(1)
+                        
 
             elif roleChoiceOne.lower() == "no":
                 roleChoiceOne = "none"
-          #  else:
-           #     print("Not a valid class.")
+            
     else:
         print("Please write yes or no")
         roleChoiceOne = 0
@@ -104,31 +114,35 @@ while roleChoiceOne == 0:
 
 while roleChoiceTwo == 0:
 
-    if roleChoiceTwo == yesNo:
-        roleChoiceTwo = 0
-    else:
+    if playerTwo == True:
         roleChoiceTwo = input("\nPlayer 2 do you want to choose an class? yes/no\n")
+        time.sleep(1)
 
-    if roleChoiceTwo in yesNo:
-        while roleChoiceTwo in yesNo:
-            if playerTwo == True:
-                if roleChoiceTwo.lower() == "yes":
-                    print("\nThere are 3 different classes to choose from. \n")
-                    print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                    print("bandit: Has a 20% CHANCE to steal the others win or loss.")
-                    print("priest: Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
-                    print("If you don't want a class write in none below. ")
+        if roleChoiceTwo in yesNo:
 
-                    roleChoiceTwo = input("Please write which class you'll like to be: \n")
-                    if roleChoiceTwo in roles:
-                        print("Ok, great choice! \n")
-                    elif roleChoiceTwo.lower() == "no":
-                        roleChoiceTwo = "none"
-                   # else:
-                    #    print("Not a valid class.")
-    else:
-        print("Please write yes or no")
-        roleChoiceTwo = 0
+            while roleChoiceTwo in yesNo:
+                    if roleChoiceTwo.lower() == "yes":
+                        print("\nThere are 3 different classes to choose from. \n")
+                        print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
+                        print("bandit: Has a 20% CHANCE to steal the others win or loss.")
+                        print("priest: Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
+                        print("If you don't want a class write in none below. ")
+
+                        while roleWrong == False:
+                            roleChoiceTwo = input("Please write which class you'll like to be: \n")
+                            if roleChoiceTwo in roles:
+                                print("Ok, great choice! \n")
+                                input("Press enter")
+                                roleWrong = True
+                            elif roleChoiceTwo.lower() == "no":
+                                roleChoiceTwo = "none"
+                                roleWrong = True
+                            else:
+                                print("Not a valid class.\n")
+                   
+        else:
+            print("Please write yes or no")
+            roleChoiceTwo = 0
 
 while playGame.lower() == "yes":
 
@@ -145,14 +159,9 @@ while playGame.lower() == "yes":
         banditStealTwo = randint(1, 10)
 
 
-        if gameRound == 1:
-            print(f"You have now completed {gameRound} round!")
-        elif gameRound > 1:
-            print(f"You have now completed {gameRound} rounds!")       
-
         if playerOneRoll > playerTwoRoll:
-            print(f"{playerOneName} begins to charge against {playerTwoName}!")
             gameRound += 1
+            print(f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!")
 
             if roleChoiceOne == "priest":
                 if priestHealOne == 2:
@@ -242,10 +251,17 @@ while playGame.lower() == "yes":
                             print(f"{playerTwoName} fails to steal from the opponent")
 
             playerTwoLife -= 1
-            print(f"Player 2 lost and now has {playerTwoLife} lives left.")
-            input("Press enter")
+            print(f"{playerTwoName} lost terribly to {playerOneName} and now has {playerTwoLife} lives left.")
+
+            if gameRound == 1:
+                print(f"You have now completed {gameRound} round!")
+            elif gameRound > 1:
+                print(f"You have now completed {gameRound} rounds!")  
+                
+            input("Press enter\n")
         elif playerOneRoll < playerTwoRoll:
             gameRound += 1
+            print(f"{playerTwoName} begins to charge against {playerOneName} with an {weapon} in their hand!")
 
             if roleChoiceOne == "priest":
                 if priestHealOne == 2:
@@ -335,19 +351,27 @@ while playGame.lower() == "yes":
                             print(f"{playerTwoName} fails to steal from the opponent")
  
             playerOneLife -= 1
-            print(f"Player 1 lost and now has {playerOneLife} lives left.")
-            input("Press enter")
+            print(f"{playerOneName} lost hard time to  and now has {playerOneLife} lives left.")
+
+            if gameRound == 1:
+                 print(f"You have now completed {gameRound} round!")
+            elif gameRound > 1:
+                 print(f"You have now completed {gameRound} rounds!")       
+
+            input("Press enter\n")
 
         else:
             gameRound += 1
             print("Both players tried to attack each other, but it seems like luck was on no ones side. I wish you the best of luck in the next round!")
-            input("Press enter")
+            input("Press enter \n")
 
         if playerOneLife == 0:
-            print(f"In a harsh battle {playerOneName} persisted and won. Congratulations to your victory over {playerTwoName}!")
+            print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
+            print(f"{playerOneName} you are now officially better then {playerTwoName}")
             game = False
         elif playerTwoLife == 0:
-            print(f"In a harsh battle {playerOneName} persisted and won. Congratulations to your victory over {playerTwoName}!")
+            print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
+            print(f"{playerOneName} you are now officially better then {playerTwoName}")
             game = False
 
     playGame = input("Would you like to play again? yes/no: ")
