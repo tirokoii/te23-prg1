@@ -37,7 +37,7 @@ while game == True:
     gameRound = 0
     playGame = "yes"
     roles = ["knight", "priest", "bandit"]
-    randomWeapon = ["sword", "gummy duck", "axe", "bone", "Spear", "cat", "lollipop", "shield", "pistol", "hammer", "scythe", "bow"]
+    randomWeapon = ["sword", "gummi duck", "axe", "bone", "Spear", "cat", "lollipop", "shield", "pistol", "hammer", "scythe", "bow"]
     weapon = random.choice(randomWeapon)
     yesNo = ["yes", "no"]
     roleChoiceOne = 0
@@ -149,7 +149,7 @@ while game == True:
 
     while playGame.lower() == "yes":
 
-        while game == True:
+        while True:
             playerOneRoll = randint(1, 20)
             playerTwoRoll = randint(1, 20)
 
