@@ -52,14 +52,13 @@ while game == True:
     roleWrong = True
 
     while True:
-        
         playerTwoName = input(Fore.WHITE + "\nIs there an second player? yes/no: \n")
 
-        if playerTwoName.lower() == "yes":
+        if playerTwoName.lower() == "yes" or playerTwoName.lower() == "y":
             playerTwoName = input(Fore.LIGHTMAGENTA_EX + "\nPlayer 2 please write your name: \n")
             playerTwo = True
             break
-        elif playerTwoName.lower() == "no":
+        elif playerTwoName.lower() == "no" or playerTwoName.lower() == "n":
             print("\nYou'll now be playing with a computer.")
             playerTwoName = "computer"
             playerTwo = False
@@ -90,33 +89,33 @@ while game == True:
         roleChoiceOne = input(Fore.CYAN + "\nPlayer 1 do you want to choose an class? yes/no\n")
         time.sleep(1)
 
-        if roleChoiceOne in yesNo:
+        if roleChoiceOne.lower() == "yes" or roleChoiceOne.lower() == "y" or roleChoiceOne.lower() == "no" or roleChoiceOne.lower() == "n":
 
-            while roleChoiceOne in yesNo:
-                if roleChoiceOne.lower() == "yes":
-                    print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
-                    print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                    print("bandit: Has a 20% CHANCE to steal the others win or loss.")
-                    print("priest: Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
-                    print("If you don't want a class write in none below. ")
-
+            while True:
+                if roleChoiceOne.lower() == "yes" or roleChoiceOne.lower() == "y":
                     while roleWrong == True: 
+                        print("\n\n\n\n")
+                        print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
+                        print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
+                        print("bandit: Has a 20% CHANCE to steal the others win or loss.")
+                        print("priest: Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
+                        print("If you don't want a class write in none below.\n")
                         roleChoiceOne = input(Fore.CYAN + "Please write which class you'll like to be: \n")
                         if roleChoiceOne in roles:
                             print(Fore.WHITE + "Ok, fantastic! \n")
                             time.sleep(1)
                             roleWrong = False
-                        elif roleChoiceOne.lower() == "no":
+                            break
+                        elif roleChoiceOne.lower() == "no" or roleChoiceOne.lower() == "n":
                             roleChoiceOne = "none"
                             roleWrong = False
                         else:
                             print("Not a valid class.\n")
                             time.sleep(1)
                             
-
-                elif roleChoiceOne.lower() == "no":
+                elif roleChoiceOne.lower() == "no" or roleChoiceOne.lower() == "n":
                     roleChoiceOne = "none"
-                
+                break
         else:
             print("Please write yes or no")
             roleChoiceOne = 0
@@ -128,33 +127,36 @@ while game == True:
             roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "\nPlayer 2 do you want to choose an class? yes/no\n")
             time.sleep(1)
 
-            if roleChoiceTwo in yesNo:
+            if roleChoiceTwo.lower() == "yes" or roleChoiceTwo.lower() == "y" or roleChoiceTwo.lower() == "no" or roleChoiceTwo.lower() == "n":
 
-                while roleChoiceTwo in yesNo:
-                        if roleChoiceTwo.lower() == "yes":
-                            print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
-                            print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                            print("bandit: Has a 20% CHANCE to steal the others win or loss.")
-                            print("priest: Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
-                            print("If you don't want a class write in none below. ")
-
+                while True:
+                        if roleChoiceTwo.lower() == "yes" or roleChoiceTwo.lower() == "y":
                             while roleWrong == False:
+
+                                print("\n\n\n\n")
+                                print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
+                                print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
+                                print("bandit: Has a 20% CHANCE to steal the others win or loss.")
+                                print("priest: Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
+                                print("If you don't want a class write in none below. ")
+
                                 roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "Please write which class you'll like to be: \n")
                                 if roleChoiceTwo in roles:
                                     print(Fore.WHITE + "Ok, great choice! \n")
                                     input("Press enter")
                                     roleWrong = True
-                                elif roleChoiceTwo.lower() == "no":
+                                    break
+                                elif roleChoiceTwo.lower() == "no" or roleChoiceTwo.lower() == "n":
                                     roleChoiceTwo = "none"
                                     roleWrong = True
                                 else:
                                     print("Not a valid class.\n")
-                    
+                        break
             else:
                 print("Please write yes or no")
                 roleChoiceTwo = 0
 
-    while playGame.lower() == "yes":
+    while playGame.lower() == "yes" or playGame.lower() == "y":
 
         while True:
             playerOneRoll = randint(1, 20)
@@ -381,13 +383,15 @@ while game == True:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
                 game = False
+                break
             elif playerTwoLife == 0:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
                 game = False
+                break
 
-    playGame = input("Would you like to play again? yes/no: ")
-    if playGame.lower() == "yes":
-        game = True
-    else: 
-        game = False
+playGame = input("Would you like to play again? yes/no: ")
+if playGame.lower() == "yes":
+    game = True
+else: 
+    game = False
