@@ -182,7 +182,7 @@ while game == True:
             knightBlockTwo = randint(1, 10)
             banditStealTwo = randint(1, 10)
             
-            def rollRolesDice():
+            def rollRolesDiceOne():
 
                 playerOneLife = 10
                 playerTwoLife = 10
@@ -247,6 +247,22 @@ while game == True:
                                     print(Fore.RED + f"{playerOneName} fails to steal from the opponent")
                                 else:
                                     print(f"The bandit {playerOneName} was to scared to steal from {playerTwoName}")
+                
+            def rollRolesDiceTwo():
+
+                playerOneLife = 10
+                playerTwoLife = 10
+        
+                playerOneRoll = randint(1, 20)
+                playerTwoRoll = randint(1, 20)
+
+                priestHealOne = randint(1, 10) # 2 is heal and 3 is fail,
+                knightBlockOne = randint(1, 10) # 4 is block and 5 is fail,
+                banditStealOne = randint(1, 10) # 6 and 7 is steal and 8 if fail
+
+                priestHealTwo = randint(1, 10) 
+                knightBlockTwo = randint(1, 10)
+                banditStealTwo = randint(1, 10)
 
                 if roleChoiceTwo == "priest":
                     if priestHealTwo == 2:
@@ -301,9 +317,26 @@ while game == True:
                 gameRound += 1
                 playerTwoLife -= 1
 
-                print(Fore.CYAN + f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!") 
+                print(Fore.WHITE + f"{Fore.CYAN + playerOneName} begins to charge against {Fore.LIGHTMAGENTA_EX + playerTwoName} with an {weapon} in their hand!") 
+                
+                print(Fore.WHITE + f"Does {Fore.CYAN + playerOneName} want to use one of their {Fore.CYAN + playerOneCharges} charges?")
+                playerOneChargeDecide = (Fore.CYAN + "")
 
-                rollRolesDice()
+                print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges?")
+                playerTwoChargeDecide = (Fore.LIGHTMAGENTA_EX + "")
+
+                if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                     rollRolesDiceOne()
+                     rollRolesDiceTwo()
+                elif playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    rollRolesDiceOne()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                    rollRolesDiceTwo()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    print("Continue...")
+                    time.sleep(1)
+                else:
+                    print("Please write yes, no, y or n.")
                 
                 if playerOneRoll < playerTwoRoll:
                     print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
@@ -325,7 +358,7 @@ while game == True:
                 playerOneLife -= 1
                 print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} begins to charge against {playerOneName} with an {weapon} in their hand!")
 
-                rollRolesDice()
+                rollRolesDiceOne()
 
                 if playerOneRoll < playerTwoRoll:
                     print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
