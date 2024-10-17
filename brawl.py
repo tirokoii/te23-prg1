@@ -5,8 +5,7 @@
 #Bandit - There is a 20% chance to take a life from opponent
 #Knight - There is a 20% chance to block an attack
 #Priest - There is a 20% chance to heal yourself
-#Barbarians - There is a 10% chance for crit hit
-#Get 10 charges - if time 
+#Get 10 charges - if time
 #How?
 
 #Create variables for player 1 and player 2 - if player 2 is no then computer
@@ -26,6 +25,8 @@ from colorama import init
 init()
 from colorama import Fore
 
+stop = Fore.WHITE
+
 game = True
 
 while game == True:
@@ -34,19 +35,18 @@ while game == True:
     print("In this game you'll get to choose a class and name for your character and then fight against an opponent \003")
     time.sleep (5)
 
-    playerOneName = input(Fore.CYAN + "\nPlayer 1 please write your name: \n")
     print(Fore.WHITE + "\nPlayer 1 please write your name:")
     playerOneName = input(Fore.CYAN + "")
+    playerOneName = Fore.CYAN + playerOneName + stop
+
     playerTwo = False
 
     playerOneLife = 10
     playerTwoLife = 10
-    playerTwo = False
-        
+
 
     gameRound = 0
     playGame = "yes"
-    roles = ["knight", "priest", "bandit"]
     roles = ["knight", "priest", "bandit", "k", "p", "b"]
     randomWeapon = ["sword", "gummi duck", "axe", "bone", "Spear", "cat", "lollipop", "shield", "pistol", "hammer", "scythe", "bow"]
     weapon = random.choice(randomWeapon)
@@ -58,24 +58,23 @@ while game == True:
     playerTwoCharges = 10
 
     while True:
-        playerTwoName = input(Fore.WHITE + "\nIs there an second player? yes/no: \n")
+
         print(Fore.WHITE + "\nIs there an second player? yes/no:")
         playerTwoName = input(Fore.YELLOW + "")
 
         if playerTwoName.lower() == "yes" or playerTwoName.lower() == "y":
-            playerTwoName = input(Fore.LIGHTMAGENTA_EX + "\nPlayer 2 please write your name: \n")
             print(Fore.WHITE + "\nPlayer 2 please write your name:")
             playerTwoName = input(Fore.LIGHTMAGENTA_EX + "")
             playerTwo = True
+            playerTwoName = Fore.LIGHTMAGENTA_EX + playerTwoName + stop
             break
         elif playerTwoName.lower() == "no" or playerTwoName.lower() == "n":
-            print("\nYou'll now be playing with a computer.")
             print(Fore.WHITE + "\nYou'll now be playing with a computer.")
             playerTwoName = "computer"
+            playerTwoName = Fore.LIGHTMAGENTA_EX + playerTwoName + stop
             playerTwo = False
             break
         else:
-            print("Please write yes or no")
             print(Fore.RED + "Please write yes, no, y or n")
 
     if playerTwoName.lower() == "computer":
@@ -95,9 +94,8 @@ while game == True:
 
 
 
-    while roleChoiceOne == True:
+    while roleChoiceOne == 0:
 
-        roleChoiceOne = input(Fore.CYAN + "\nPlayer 1 do you want to choose an class? yes/no\n")
         print(Fore.WHITE + "\nPlayer 1 do you want to choose an class? yes/no")
         roleChoiceOne = input(Fore.CYAN + "")
         time.sleep(1)
@@ -109,19 +107,11 @@ while game == True:
                     while roleWrong == True: 
                         print("\n\n\n\n")
                         print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
-                        print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                        print("bandit: Has a 20% CHANCE to steal the others win or loss.")
-                        print("priest: Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
-                        print("If you don't want a class write in none below.\n")
-                        roleChoiceOne = input(Fore.CYAN + "Please write which class you'll like to be: \n")
+                        print(Fore.BLUE + f"knight, k:{stop} Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
+                        print(Fore.MAGENTA + f"bandit, b:{stop} Has a 20% CHANCE to steal the others win or loss.")
+                        print(Fore.GREEN + f"priest, p:{stop} Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
+                        print("If you don't want a class write in none,n or no below.\n")
 
-                        if roleChoiceOne in roles:
-                            print(Fore.BLUE + "\nThere are 3 different classes to choose from. \n")
-                            print("knight, k: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                            print("bandit, b: Has a 20% CHANCE to steal the others win or loss.")
-                            print("priest, p: Has a 10% CHANCE to heal it self and 10% chance to heal the opponent. \n")
-                            print("If you don't want a class write in none,n or no below.\n")
-                
                         print(Fore.WHITE + "Please write which class you'll like to be:")
                         roleChoiceOne = input(Fore.CYAN + "")
                         if roleChoiceOne.lower() in roles:
@@ -134,7 +124,6 @@ while game == True:
                             roleWrong = False
                             break
                         else:
-                            print("Not a valid class.\n")
                             print(Fore.RED + "Not a valid class.\n")
                             time.sleep(1)
 
@@ -142,15 +131,13 @@ while game == True:
                     roleChoiceOne = "none"
                 break
         else:
-            print("Please write yes or no")
             print(Fore.RED + "Please write yes, no, n or y")
-            roleChoiceOne = True
+            roleChoiceOne = 0
 
 
-    while roleChoiceTwo == True:
+    while roleChoiceTwo == 0:
 
         if playerTwo == True:
-            roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "\nPlayer 2 do you want to choose an class? yes/no\n")
             print(Fore.WHITE + "\nPlayer 2 do you want to choose an class? yes/no")
             roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "")
             time.sleep(1)
@@ -163,13 +150,11 @@ while game == True:
 
                                 print("\n\n\n\n")
                                 print(Fore.WHITE + "\nThere are 3 different classes to choose from. \n")
-                                print(Fore.BLUE + "\nThere are 3 different classes to choose from. \n")
-                                print("knight: Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
-                                print("bandit: Has a 20% CHANCE to steal the others win or loss.")
-                                print("priest: Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
+                                print(Fore.BLUE + f"knight, k:{stop} Has a 10% CHANCE to dodge and 10% chance take 1 extra damage for running into the opponent.")
+                                print(Fore.MAGENTA + f"bandit, b:{stop} Has a 20% CHANCE to steal the others win or loss.")
+                                print(Fore.GREEN + f"priest, p:{stop} Has a 10% CHANCE to heal itself and 10% chance to heal the opponent. \n")
                                 print("If you don't want a class write in none below. ")
 
-                                roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "Please write which class you'll like to be: \n")
                                 print(Fore.WHITE + "Please write which class you'll like to be:")
                                 roleChoiceTwo = input(Fore.LIGHTMAGENTA_EX + "")
                                 if roleChoiceTwo in roles:
@@ -184,12 +169,13 @@ while game == True:
                                     print("Not a valid class.\n")
                         break
             else:
-                print("Please write yes or no")
                 print(Fore.RED + "Please write yes or no")
+                roleChoiceTwo = 0
 
     while playGame.lower() == "yes" or playGame.lower() == "y":
 
         while True:
+
             playerOneRoll = randint(1, 20)
             playerTwoRoll = randint(1, 20)
 
@@ -200,158 +186,197 @@ while game == True:
             priestHealTwo = randint(1, 10) 
             knightBlockTwo = randint(1, 10)
             banditStealTwo = randint(1, 10)
-            
-            def rollRolesDice():
+
+            def rollRolesDiceOne():
+
+                playerOneLife = 10
+                playerTwoLife = 10
+
+                playerOneRoll = randint(1, 20)
+                playerTwoRoll = randint(1, 20)
+
+                priestHealOne = randint(1, 10) # 2 is heal and 3 is fail,
+                knightBlockOne = randint(1, 10) # 4 is block and 5 is fail,
+                banditStealOne = randint(1, 10) # 6 and 7 is steal and 8 if fail
+
+                priestHealTwo = randint(1, 10) 
+                knightBlockTwo = randint(1, 10)
+                banditStealTwo = randint(1, 10)
+
+                if roleChoiceOne == "priest":
+                    if priestHealOne == 2:
+                        print(Fore.CYAN + f"{playerOneName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                        playerOneLife += 1
+                        print(Fore.GREEN + f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
+                    elif priestHealOne == 3:
+                        print(f"{playerOneName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                        playerTwoLife += 1
+                        print(Fore.RED + f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
+                        print(Fore.CYAN + f"{playerTwoName} now has {playerTwoLife} lives")
+                    else:
+                        print(f"{playerOneName} powers weren't strong enough to heal, they failed.")
+
+                elif roleChoiceOne == "knight":
+                    if playerOneRoll < playerTwoRoll:
+                        if knightBlockOne == 4:
+                            playerOneLife += 1
+                            print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                            print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                            print(Fore.GREEN + f"{playerOneName} successfully blocked the attack!")
+                        elif knightBlockOne == 5:
+                            print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
+                            print(Fore.CYAN + f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                            print(Fore.RED + f"A loud bonk echoes throughout the battleground, {playerOneName} is attacked by {playerTwoName} with an {weapon}!")
+                    elif playerOneRoll == playerTwoRoll:
+                        if knightBlockOne and knightBlockTwo == 4:
+                            playerOneLife -= 1
+                            playerTwoLife -= 1
+                            print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with their shield!")
+                            print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
+                            print(Fore.RED + f"{playerOneName} and {playerTwoName} collides, both takes 1 damage! {playerOneName} has {playerOneLife} and {playerTwoName} has {playerTwoLife}.")
+                    else:
+                        print(f"{playerOneName} Failed to block and took damage")
+
+                elif roleChoiceOne == "bandit":
+
+                                if banditStealOne == 6 or banditStealOne == 7:
+                                    print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
+                                    print(Fore.GREEN + f"{playerOneName} successfully stole {playerTwoName}'s roll!")
+                                    banditRoll = playerOneRoll
+                                    playerOneRoll = playerTwoRoll
+                                    playerTwoRoll = banditRoll
+                                elif banditStealOne == 8:
+                                    print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
+                                    print(Fore.RED + f"{playerOneName} fails to steal from the opponent")
+                                else:
+                                    print(f"The bandit {playerOneName} was to scared to steal from {playerTwoName}")
+                
+            def rollRolesDiceTwo():
 
                 playerOneLife = 10
                 playerTwoLife = 10
         
                 playerOneRoll = randint(1, 20)
                 playerTwoRoll = randint(1, 20)
+                priestHealOne = randint(1, 10) # 2 is heal and 3 is fail,
+                knightBlockOne = randint(1, 10) # 4 is block and 5 is fail,
+                banditStealOne = randint(1, 10) # 6 and 7 is steal and 8 if fail
+                priestHealTwo = randint(1, 10) 
+                knightBlockTwo = randint(1, 10)
+                banditStealTwo = randint(1, 10)
 
-                if playerOneRoll > playerTwoRoll:
-                    gameRound += 1
-                    print(Fore.CYAN + f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!")
-                    priestHealOne = randint(1, 10) # 2 is heal and 3 is fail,
-                    knightBlockOne = randint(1, 10) # 4 is block and 5 is fail,
-                    banditStealOne = randint(1, 10) # 6 and 7 is steal and 8 if fail
-                    priestHealTwo = randint(1, 10) 
-                    knightBlockTwo = randint(1, 10)
-                    banditStealTwo = randint(1, 10)
-
-                    if roleChoiceOne == "priest":
-                        if priestHealOne == 2:
-                            print(Fore.CYAN + f"{playerOneName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                            playerOneLife += 1
-                            print(Fore.GREEN + f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
-                            print(Fore.CYAN + f"{playerOneName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                            playerOneLife += 1
-                            print(Fore.GREEN + f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives")
-                        elif priestHealOne == 3:
-                            print(f"{playerOneName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                            playerTwoLife += 1
-                            print(Fore.RED + f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
-                            print(Fore.CYAN + f"{playerTwoName} now has {playerTwoLife} lives")
-                        else:
-                            print(f"{playerOneName} powers weren't strong enough to heal, they failed.")
-
-                    elif roleChoiceOne == "knight":
-                        if playerOneRoll < playerTwoRoll:
-                            if knightBlockOne == 4:
-                                playerOneLife += 1
-                                print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with a killing intent!")
-                                print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                                print(Fore.GREEN + f"{playerOneName} successfully blocked the attack!")
-                            elif knightBlockOne == 5:
-                                print(f"{playerTwoName} charges against {playerOneName} with a killing intent!")
-                                print(Fore.CYAN + f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                                print(Fore.RED + f"A loud bonk echoes throughout the battleground, {playerOneName} is attacked by {playerTwoName} with an {weapon}!")
-                        elif playerOneRoll == playerTwoRoll:
-                            if knightBlockOne and knightBlockTwo == 4:
-                                playerOneLife -= 1
-                                playerTwoLife -= 1
-                                print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with their shield!")
-                                print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                                print(Fore.RED + f"{playerOneName} and {playerTwoName} collides, both takes 1 damage! {playerOneName} has {playerOneLife} and {playerTwoName} has {playerTwoLife}.")
-          
-                    elif roleChoiceOne == "bandit":   
-                                
-                        if banditStealOne == 6 or banditStealOne == 7:
-                            print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
-                            print(Fore.GREEN + f"{playerOneName} successfully stole {playerTwoName}'s roll!")
-                            banditRoll = playerOneRoll
-                            playerOneRoll = playerTwoRoll
-                            playerTwoRoll = banditRoll
-                        elif banditStealOne == 8:
-                            print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
-                            print(Fore.RED + f"{playerOneName} fails to steal from the opponent")
-                        else:
-                            print(f"{playerOneName} Failed to block and took damage")
-           
-                    elif roleChoiceOne == "bandit":
-                                    
-                        if banditStealOne == 6 or banditStealOne == 7:
-                            print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
-                            print(Fore.GREEN + f"{playerOneName} successfully stole {playerTwoName}'s roll!")
-                            banditRoll = playerOneRoll
-                            playerOneRoll = playerTwoRoll
-                            playerTwoRoll = banditRoll
-                        elif banditStealOne == 8:
-                            print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
-                            print(Fore.RED + f"{playerOneName} fails to steal from the opponent")
-                        else:
-                            print(f"The bandit {playerOneName} was to scared to steal from {playerTwoName}")
-
-                    if roleChoiceTwo == "priest":
-                        if priestHealTwo == 2:
+                if roleChoiceTwo == "priest":
+                    if priestHealTwo == 2:
                             print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
                             print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
                             playerTwoLife += 1
                             print(Fore.GREEN + f"{playerTwoName} successfully healed them self. They now have {playerTwoLife} lives")
-                        elif priestHealTwo == 3:
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                            playerOneLife += 1
-                            print(Fore.RED + f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} now has {playerOneLife} lives")
-                        else:
-                            print(f"{playerTwoName} didn't hav enough power to heal.")
+                    elif priestHealTwo == 3:
+                        print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
+                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
+                        playerOneLife += 1
+                        print(Fore.RED + f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
+                        print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} now has {playerOneLife} lives")
+                    else:
+                        print(f"{playerTwoName} didn't hav enough power to heal.")
 
-                    elif roleChoiceTwo == "knight":
-                        if playerTwoRoll > playerOneRoll:
-                            if knightBlockTwo == 4:
-                                playerTwoLife += 1
-                                print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
-                                print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                                print(Fore.GREEN + f"{playerTwoName} successfully blocked the attack!")
-                            elif knightBlockTwo == 5:
-                                print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
-                                print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                                print(Fore.RED + f"A loud bonk echoes throughout the battleground, {playerTwoName} is attacked by {playerOneName} with an {weapon}!")
-                        elif playerOneRoll == playerTwoRoll:
-                            if knightBlockOne and knightBlockTwo == 4:
-                                playerOneLife -= 1
-                                playerTwoLife -= 1
-                                print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with their shield!")
-                                print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                                print(Fore.RED + f"{playerTwoName} and {playerOneName} collides, both takes 1 damage! {playerTwoName} has {playerTwoLife} and {playerOneName} has {playerOneLife}.")
-                        else:
-                            print(f"{playerTwoName} didn't have enough time to pick up the shield")
+                elif roleChoiceTwo == "knight":
+                    if playerTwoRoll > playerOneRoll:
+                        if knightBlockTwo == 4:
+                            playerTwoLife += 1
+                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                            print(Fore.GREEN + f"{playerTwoName} successfully blocked the attack!")
+                        elif knightBlockTwo == 5:
+                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
+                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                            print(Fore.RED + f"A loud bonk echoes throughout the battleground, {playerTwoName} is attacked by {playerOneName} with an {weapon}!")
+                    elif playerOneRoll == playerTwoRoll:
+                        if knightBlockOne and knightBlockTwo == 4:
+                            playerOneLife -= 1
+                            playerTwoLife -= 1
+                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with their shield!")
+                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
+                            print(Fore.RED + f"{playerTwoName} and {playerOneName} collides, both takes 1 damage! {playerTwoName} has {playerTwoLife} and {playerOneName} has {playerOneLife}.")
+                    else:
+                        print(f"{playerTwoName} didn't have enough time to pick up the shield")
 
-                    elif roleChoiceTwo == "bandit":
-                        if banditStealTwo == 6 or banditStealTwo == 7:
-                            print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
-                            print(Fore.GREEN + f"{playerTwoName} successfully stole {playerOneName}'s roll!")
-                            banditRoll = playerTwoRoll
-                            playerTwoRoll = playerOneRoll
-                            playerOneRoll = banditRoll
-                        elif banditStealTwo == 8:
-                            print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
-                            print(Fore.RED + f"{playerTwoName} fails to steal from the opponent")
-                        else:
-                            print(f"The bandit {playerTwoName} was scared by the thought of stealing.")
-
-                    elif roleChoiceTwo == "bandit":   
-                                if banditStealTwo == 6 or banditStealTwo == 7:
-                                    print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
-                                    print(Fore.GREEN + f"{playerTwoName} successfully stole {playerOneName}'s roll!")
-                                    banditRoll = playerTwoRoll
-                                    playerTwoRoll = playerOneRoll
-                                    playerOneRoll = banditRoll
-                                elif banditStealTwo == 8:
-                                    print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
-                                    print(Fore.RED + f"{playerTwoName} fails to steal from the opponent")
+                elif roleChoiceTwo == "bandit":
+                    if banditStealTwo == 6 or banditStealTwo == 7:
+                        print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
+                        print(Fore.GREEN + f"{playerTwoName} successfully stole {playerOneName}'s roll!")
+                        banditRoll = playerTwoRoll
+                        playerTwoRoll = playerOneRoll
+                        playerOneRoll = banditRoll
+                    elif banditStealTwo == 8:
+                        print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
+                        print(Fore.RED + f"{playerTwoName} fails to steal from the opponent")
+                    else:
+                        print(f"The bandit {playerTwoName} was scared by the thought of stealing.")
 
             if playerOneRoll > playerTwoRoll:
                 gameRound += 1
                 playerTwoLife -= 1
-                print(Fore.WHITE + f"{playerOneName} hit {playerTwoName} in the face with an {weapon}")
-                print(Fore.WHITE + f"{playerTwoName} lost terribly to {playerOneName} and now has {playerTwoLife} lives left.")
-                print(Fore.CYAN + f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!") 
-                rollRolesDice()
+
+                print(Fore.WHITE + f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!") 
+                
+                print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges?")
+                playerOneChargeDecide = (Fore.CYAN + "")
+
+                print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges?")
+                playerTwoChargeDecide = (Fore.LIGHTMAGENTA_EX + "")
+
+                if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                     rollRolesDiceOne(rollRolesDiceTwo())
+                elif playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    rollRolesDiceOne()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                    rollRolesDiceTwo()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    print("Ok...")
+                    time.sleep(1)
+                else:
+                    print("Please write yes, no, y or n.")
+
+                if playerOneRoll < playerTwoRoll:
+                    print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
+                    print(Fore.WHITE + f"{playerOneName} lost hard time to and now has {playerOneLife} lives left.\n")
+                elif playerOneRoll > playerTwoRoll:
+                    print(Fore.WHITE + f"{playerOneName} hit {playerTwoName} in the face with an {weapon}")
+                    print(Fore.WHITE + f"{playerTwoName} lost terribly to {playerOneName} and now has {playerTwoLife} lives left.")
+
+
+                if gameRound == 1:
+                    print(f"You have now completed {gameRound} round!")
+                elif gameRound > 1:
+                    print(f"You have now completed {gameRound} rounds!")       
+
+                input("Press enter\n")
+
+            elif playerOneRoll < playerTwoRoll:
+                gameRound += 1
+                playerOneLife -= 1
+                
+                print(Fore.WHITE + f"{playerTwoName} begins to charge against {playerOneName} with an {weapon} in their hand!")
+                print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges?")
+                playerOneChargeDecide = (Fore.CYAN + "")
+
+                print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges?")
+                playerTwoChargeDecide = (Fore.LIGHTMAGENTA_EX + "")
+
+                if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                     rollRolesDiceOne(rollRolesDiceTwo())
+                elif playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    rollRolesDiceOne()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
+                    rollRolesDiceTwo()
+                elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                    print("Ok...")
+                    time.sleep(1)
+                else:
+                    print("Please write yes, no, y or n.")
                 
                 if playerOneRoll < playerTwoRoll:
                     print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
@@ -359,115 +384,7 @@ while game == True:
                 elif playerOneRoll > playerTwoRoll:
                     print(Fore.WHITE + f"{playerOneName} hit {playerTwoName} in the face with an {weapon}")
                     print(Fore.WHITE + f"{playerTwoName} lost terribly to {playerOneName} and now has {playerTwoLife} lives left.")
-                    
 
-                if gameRound == 1:
-                    print(Fore.WHITE + f"You have now completed {gameRound} round!")
-                    print(f"You have now completed {gameRound} round!")
-                elif gameRound > 1:
-                    print(Fore.WHITE + f"You have now completed {gameRound} rounds!")  
-                    
-                    print(f"You have now completed {gameRound} rounds!")       
-                input("Press enter\n")
-            elif playerOneRoll < playerTwoRoll:
-                gameRound += 1
-                playerOneLife -= 1
-                print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} begins to charge against {playerOneName} with an {weapon} in their hand!")
-
-                if roleChoiceOne == "priest":
-                    if priestHealOne == 2:
-                            print(Fore.CYAN+ f"{playerOneName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerOneName}'s feet!")
-                            print(Fore.GREEN + f"{playerOneName} successfully healed them self. They now have {playerOneLife} lives\n")
-                            playerOneLife += 1
-                    elif priestHealOne == 3:
-                        print(Fore.CYAN + f"{playerOneName} is attempting to put up an healing spell")
-                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                        playerTwoLife += 1
-                        print(Fore.RED + f"Oh no, {playerOneName} failed to heal them self, they instead healed the opponent.")
-                        print(f"{playerTwoName} now has {playerTwoLife} lives\n")
-                elif roleChoiceOne == "knight":
-                    if playerOneRoll < playerTwoRoll:
-                        if knightBlockOne == 4:
-                            playerOneLife += 1
-                            print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with a killing intent!")
-                            print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                            print(Fore.GREEN + f"{playerOneName} successfully blocked the attack!\n")
-                        elif knightBlockOne == 5:
-                            print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with a killing intent!")
-                            print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                            print(Fore.RED + f"A loud bonk echoes throughout the battleground, {playerOneName} is attacked by {playerTwoName} with an {weapon}!\n")
-                    elif playerOneRoll == playerTwoRoll:
-                        if knightBlockOne and knightBlockTwo == 4:
-                            playerOneLife -= 1
-                            playerTwoLife -= 1
-                            print(Fore.CYAN + f"{playerTwoName} charges against {playerOneName} with their shield!")
-                            print(f"{playerOneName} takes out the shinning shield from the ground and is attempting to block {playerTwoName}'s attack!")
-                            print(Fore.RED + f"{playerOneName} and {playerTwoName} collides, both takes 1 damage! {playerOneName} has {playerOneLife} and {playerTwoName} has {playerTwoLife}.\n")
-                elif roleChoiceOne == "bandit":   
-                            
-                            if banditStealOne == 6 or banditStealOne == 7:
-                                print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}!")
-                                print(Fore.GREEN + f"{playerOneName} successfully stole {playerTwoName}'s roll!\n")
-                                banditRoll = playerOneRoll
-                                playerOneRoll = playerTwoRoll
-                                playerTwoRoll = banditRoll
-                            elif banditStealOne == 8:
-                                print(Fore.CYAN + f"The bandit {playerOneName} attempts to steal from {playerTwoName}")
-                                print(Fore.RED + f"{playerOneName} fails to steal from the opponent\n")
-                if roleChoiceTwo == "priest":
-                    if priestHealTwo == 2:
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
-                            print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
-                            playerTwoLife += 1
-                            print(Fore.RED + f"{playerTwoName} successfully healed them self. They now have {playerTwoLife} lives\n")
-                    elif priestHealTwo == 3:
-                        print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
-                        print(f"A giant array begins to glow beneath {playerOneName}'s feet! \n")
-                        playerOneLife += 1
-                        print(Fore.RED + f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
-                        print(f"{playerOneName} now has {playerOneLife} lives\n")
-                        rollRolesDice()
-
-                elif roleChoiceTwo == "knight":
-                    if playerTwoRoll < playerOneRoll:
-                        if knightBlockTwo == 4:
-                            playerTwoLife += 1
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
-                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                            print(Fore.GREEN + f"{playerTwoName} successfully blocked the attack!\n")
-                        elif knightBlockTwo == 5:
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with a killing intent!")
-                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                            print(Fore.LIGHTMAGENTA_EX + f"A loud bonk echoes throughout the battleground, {playerTwoName} is attacked by {playerOneName} with an {weapon}!\n")
-                    elif playerOneRoll == playerTwoRoll:
-                        if knightBlockOne and knightBlockTwo == 4:
-                            playerOneLife -= 1
-                            playerTwoLife -= 1
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} charges against {playerTwoName} with their shield!")
-                            print(f"{playerTwoName} takes out the shinning shield from the ground and is attempting to block {playerOneName}'s attack!")
-                            print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} and {playerOneName} collides, both takes 1 damage! {playerTwoName} has {playerTwoLife} and {playerOneName} has {playerOneLife}.\n")
-                elif roleChoiceTwo == "bandit":   
-                            if banditStealTwo == 6 or banditStealTwo == 7:
-                                print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}!")
-                                print(Fore.GREEN + f"{playerTwoName} successfully stole {playerOneName}'s roll!\n")
-                                banditRoll = playerTwoRoll
-                                playerTwoRoll = playerOneRoll
-                                playerOneRoll = banditRoll
-                            elif banditStealTwo == 8:
-                                print(Fore.LIGHTMAGENTA_EX + f"The bandit {playerTwoName} attempts to steal from {playerOneName}")
-                                print(Fore.GREEN + f"{playerTwoName} fails to steal from the opponent\n")
-    
-                playerOneLife -= 1
-                print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
-                print(Fore.WHITE + f"{playerOneName} lost hard time to and now has {playerOneLife} lives left.\n")
-                if playerOneRoll < playerTwoRoll:
-                    print(Fore.WHITE + f"{playerTwoName} hit {playerOneName} in the face with an {weapon}")
-                    print(Fore.WHITE + f"{playerOneName} lost hard time to and now has {playerOneLife} lives left.\n")
-                elif playerOneRoll > playerTwoRoll:
-                    print(Fore.WHITE + f"{playerOneName} hit {playerTwoName} in the face with an {weapon}")
-                    print(Fore.WHITE + f"{playerTwoName} lost terribly to {playerOneName} and now has {playerTwoLife} lives left.")
-                    
 
                 if gameRound == 1:
                     print(f"You have now completed {gameRound} round!")
@@ -493,7 +410,7 @@ while game == True:
                 break
 
 playGame = input("Would you like to play again? yes/no: ")
-if playGame.lower() == "yes":
+if playGame.lower() == "yes" or playGame.lower() == "y":
     game = True
 else: 
     game = False
