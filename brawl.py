@@ -17,6 +17,9 @@
 # Fix the not a valid class message. - Fixed. 
 #Fix play game again - Fixed?
 
+#Part 2
+#Create an list and function to add items to list
+
 
 
 from random import randint
@@ -25,9 +28,9 @@ from colorama import init
 init()
 from colorama import Fore
 
+game = True
 stop = Fore.WHITE
 
-game = True
 
 while game == True:
 
