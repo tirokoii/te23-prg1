@@ -12,7 +12,7 @@ Ord/tecken
 nummer = "3" (är en strng för fnuttarna)
 3 är en int
 
-{} --> måsvingar --> används för att hålla variabler, kan även redigeras i coden med t.ex :5
+{} --> måsvingar --> används för att hålla variabler, kan även redigeras i koden med t.ex :5
 
 [] --> square bracket /block
 
@@ -54,13 +54,17 @@ float --> allows decimals
 
 {exempel:03} --> lägger till nollor i början av värdet
 
+sys -->
+
+stdin -->
+
 
 
 
 Uttryck
 
 
-artimetiska uttryck --> ett resultat som har eyy numeriskt värde, går på matematiksa regles
+artimetiska uttryck --> ett resultat som har en numeriskt värde, går på matematiksa regles
 
 artemetiska operatorer --> +, -, * och / 
 

@@ -12,7 +12,6 @@ def print(text):
         sys.stdout.flush()
         time.sleep(0.01) #Sets a time for every letter to print
     
-print("To se inventory wright inventory or i\n")
 name = input("\nHello, whats your name? \n")
 greeting = ("Welcome [name], You wake up after a long nights sleep ...")
 greeting = greeting.replace("[name]", name)
