@@ -73,3 +73,5 @@ datatyp --> Vad datan bär på för attribut
 
 
 
+
+

@@ -79,7 +79,7 @@ if "dandelion" in choice:
                                             inventory.append("strange paper")
 
                                             print("You wonder if there is anything else interesting in the other tunnel")
-                                            choice = input("Do you want to [turn] around or continue [walking]?\n").lower()
+                                            choice = input("Do you want to [turn] around or [continue] walking?\n").lower()
 
                                             if "turn" in choice:
                                                 print("You turn around an decide to follow the other tunnel.") #Keep writing on the turn choice
@@ -100,10 +100,79 @@ if "dandelion" in choice:
                                     
                                     if "yes" in choice:
                                         print("The four guards are named Theo, Leo, Deion and Seion\n")
-                                        choice = input("Which guard do you want to interact with?\n") #Continue yes answer
+                                        choice = input("Which guard do you want to interact with?\n")
+
+                                        while True:
+                                            if "Theo" in choice:
+                                                print("Theo looks at you with concerned eyes, just what is his problem?\n")
+                                                break
+                                            elif "Leo" in choice:
+                                                print("Leo gives you a quick look, seems he doesn't wanna talk to you\n")
+                                                break
+                                            elif "Deion" in choice:
+                                                print("Deion reaches out his hand seems he wants to give you something\n")
+                                                print("You have gained a pink rose!")
+                                                inventory.append("Pink rose")
+                                                break
+                                            elif "Seion" in choice:
+                                                print("Seion nods at you, seems like he knows you\n")
+                                                break
+                                            else:
+                                                print("Can't do that.")
+
+                                        print("You walk up to the door, it seems so natural for you that it's strange. Almost as if you have done this thousands of times...\n")
+                                        print("The door slowly opens as the golden filled palace fills your mind, such a marvelous sight. In the middle of the decorative room you se the king\n")
+                                        print("As you bow down the king urges you to stand up. He looks worn and torn, his before fluffy cheeks are now reduced to skin and bones. The heavy eyes seems top weigh his whole body down.")
+
+                                        if "Dandelion" and "Pink rose" in inventory:
+                                            choice = input("Do you want to give the [Pink rose] or [Dandelion] to the king?")
+                                            while True:
+                                                 if "Dandelion".lower() in choice:
+                                                    print("You give the golden flower of prosperity to the king\n Now your journey is over...\n\n\n Or is it?\n")
+                                                    print("Only you can decide when to stop imagining.")
+                                                    break
+                                                 elif "Pink rose".lower() in choice:
+                                                     print("You gave the king the flower...\n The king looks saddened at the flower, it seems you touched his heart with this kind gesture\n")
+                                                     print("With heavy footsteps he closes in, you freeze in you tracks, is he angry, happy or saddened by this flower...\n When he reaches you, in his hand you see a bottle")
+                                                     print(" The king with his small hands gives you the bottle, drink it he said. As the king demands you chug it one go. But you begin feeling dizzy...\n")
+                                                     print("The world is spinning, the last thing you see is the hamster angle paintings on the celling, how majestic...")
+                                                     print("When you wake up again you see stars, are you in heaven. As you reach out to touch the stars, you see a hand, you hand...")
+                                                     break
+                                                 else:
+                                                     print("You must be the smartest 7 year old... \n")
+                                            
+                                        elif "Dandelion" in inventory:
+                                            print(inventory)
+                                            choice = input("Do you want to give the golden flower of prosperity to the king? [yes/no]\n").lower()
+                                            while True:
+                                                if "yes".lower() in choice:
+                                                    print("You give the golden flower of prosperity to the king\n Now your journey is over...\n\n\n Or is it?\n")
+                                                    print("Only you can decide when to stop imagining.")
+                                                    break
+                                                elif "yes".lower() in choice:
+                                                    print("Fine have it your way! \n The king sent out his tropes, imprisoning you in a deep dark cell, where you are going to live out the rest of you days.")
+                                                    break
+                                                else:
+                                                    print("That was not what I was after...\n")
+                                        elif "Pink rose" in inventory:
+                                            choice = input("Do you want to give the pink rose to the king? [yes/no]")
+                                            while True:
+                                                if "yes".lower():
+                                                    print("You gave the king the flower...\n The king looks saddened at the flower, it seems you touched his heart with this kind gesture\n")
+                                                    print("With heavy footsteps he closes in, you freeze in you tracks, is he angry, happy or saddened by this flower...\n When he reaches you, in his hand you see a bottle")
+                                                    print(" The king with his small hands gives you the bottle, drink it he said. As the king demands you chug it one go. But you begin feeling dizzy...\n")
+                                                    print("The world is spinning, the last thing you see is the hamster angle paintings on the celling, how majestic...")
+                                                    print("When you wake up again you see stars, are you in heaven. As you reach out to touch the stars, you see a hand, you hand...")
+                                                    break
+                                                elif "no".lower():
+                                                    print("Fine")
+                                        else:
+                                            print("You don't have any of the required items")
+
                                     elif "no" in choice:
                                         print("You walk up to the door, it seems so natural for you that it's strange. Almost as if you have done this thousands of times...\n")
-                                        print("The door slowly opens as the golden filled palace fills your mind, such a marvelous sight. In the middle of the decorative room you se the king") #continue story
+                                        print("The door slowly opens as the golden filled palace fills your mind, such a marvelous sight. In the middle of the decorative room you se the king")
+                                        
                             else:
                                 print("You can't do that...\n\n\n\n\n")
 
@@ -135,7 +204,7 @@ if "dandelion" in choice:
             if choice == "yes":
                 print("In one bite there is no trace of the flowers existence. The fluffy fur begins to glow as you are swaying side to side, the sky is really blue and beautiful ...")
                 print(...)
-                print("The sky has suddenly become dark and full with sparkles, it is as if they are calling to you. As you begin reaching out to them you se and familiar figure. It's a hand, your hand ...")
+                print("The sky has suddenly become dark and full with sparkles, it is as if they are calling to you. As you begin reaching out to them you see a familiar figure. It's a hand, your hand ...")
             elif choice == "no":
                 print("You ponder if this choice will change your future, but the picture of an oat appears in you mind. As you think about the massive amount of oat you will gain from this golden flower the light of the sun shines through.")
                 print("As the light blinds you the [road] ahead peaks your curiosity")
