@@ -1,0 +1,54 @@
+
+* Stages of planning.
+
+    1. Figure out mechanics and how to program them <-- Here now
+    2. Begin coding mechanics
+    3. Play through
+    4. Get feedback, use feedback
+    5. Repeat till problems fixed
+    6. Add more mechanics, "if time"
+    7. Repeat 4-5 till problems fixed
+    8. Story and more text
+    9. Repeat 4-5 till problems fixed
+
+* What is the main theme?
+
+    - Christmas
+    - Text based adventure/chance
+
+* What is the goal?
+
+    - Get the highest score in the end of the game, by collecting the most priced presents
+    - Steal and replace presents with other objects
+
+* What is the game mechanics?
+
+    -Get random houses, decide if it's worth it or not to go in and Steal
+    -Sneak out and in houses, steal and replace the presents or present
+    -Get random presents
+
+
+* If more time.
+
+    - Add risk when entering homes, risk of being discovered, "homes with more risk has higher worth presents"
+    - Lose presents is discovered depending on risk in that house, "homes with higher risk drops more presents"
+    - The higher risk houses has less chance to appear
+    - Add random "abilities" that can be found in houses, example "Open presents before making your choice", "Be undetected", 
+    - Can only own one "ability" at a time
+
+
+^ How to program?
+
+    > Random house.
+        >Could make this as a def?
+
+        < Make a list that saves the houses as different values
+        < Assign a set of numbers to the different houses depending on their chance of being selected
+        < Randomize a number use a if statement to check and call the house that got chosen from list
+        < Print and use input to see if the player wants to reroll or not
+        < Make a while loop with if statement in, to check if player writes a or b, rerolls if b, goes into house if a
+
+        > Escape house
+            < Make a function for escaping or running from house - Need to research on that one
+        
+        < Create an if statement that checks if your inside or outside of house X

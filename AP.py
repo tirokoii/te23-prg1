@@ -5,8 +5,8 @@ soldTwo = 1
 
 
 def sum():
-    A = apple*1
-    P = pear*1
+    A = apple*soldOne
+    P = pear*soldTwo
 
     if A<P:
         print("Petra earned more")
@@ -57,16 +57,19 @@ print("")
 
 print("Results are:")
 print("Axel and Petra both sell 1 fruit each :")
-A = apple*1
-P = pear*1
+
+soldOne = 1
+soldTwo = 1
 sum()
 print("Axel sell 13 apples and Petra 7 pears :")
-A = apple*13
-P = pear*7
+
+soldOne = 13
+soldTwo = 7
 sum()
 print("Axel sells 15 apples and Petra 8 pears :")
-A = apple*15
-P = pear*8
+
+soldOne = 15
+soldTwo = 8
 sum()
 
 

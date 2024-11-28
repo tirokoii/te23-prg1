@@ -40,6 +40,8 @@ while True --> loop
 
 break --> stoppar loop
 
+random --> En python module
+
 isalpha --> ser till så att det bara är bokstäver som skrivs in av användaren
 
 isdigit --> ser till så att det bara är nummer som skrivs in av användaren
@@ -54,10 +56,11 @@ float --> allows decimals
 
 {exempel:03} --> lägger till nollor i början av värdet
 
-sys -->
+sys --> System specific parameters and functions --> Ger tillgång till variabler närmare interpreter
 
-stdin -->
+stdin --> Standard input --> Gör om till input
 
+rstrip() --> Removes all trailing characters, default is space
 
 
 
@@ -70,8 +73,7 @@ artemetiska operatorer --> +, -, * och /
 
 datatyp --> Vad datan bär på för attribut
 
-
-
+villkor --> 
 
 
 
