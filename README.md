@@ -22,6 +22,8 @@ nummer = "3" (är en strng för fnuttarna)
 
 == --> kollar om två värden är lika med / om sant
 
+% --> Rest av division
+
 input --> används när användaren ska interagera med programmet / skriva något till programmet
 
 int --> integer, number without decimals
@@ -73,7 +75,9 @@ artemetiska operatorer --> +, -, * och /
 
 datatyp --> Vad datan bär på för attribut
 
-villkor --> 
+villkor --> om "villkor" eller if "villkor"
+
+Syntax --> En praxis, ett slags allmänvetande inom prog om struktur, strukturella "regler"
 
 
 
