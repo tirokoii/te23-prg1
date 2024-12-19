@@ -2,7 +2,8 @@
 * Stages of planning.
 
     1. Figure out mechanics and how to program them <-- Here now
-    2. Begin coding mechanics
+       > Try out the figured mechanics <-- And here
+    2. Begin coding mechanics <-- Started
     3. Play through
     4. Get feedback, use feedback
     5. Repeat till problems fixed
@@ -19,7 +20,7 @@
 * What is the goal?
 
     - Get the highest score in the end of the game, by collecting the most priced presents
-    - Steal and replace presents with other objects
+    - Steal and replace presents with other objects, you start with 10 objects
 
 * What is the game mechanics?
 
@@ -31,16 +32,18 @@
 * If more time.
 
     - Add risk when entering homes, risk of being discovered, "homes with more risk has higher worth presents"
-    - Lose presents is discovered depending on risk in that house, "homes with higher risk drops more presents"
+    - Lose presents if discovered depending on risk in that house, "homes with higher risk drops more presents"
     - The higher risk houses has less chance to appear
     - Add random "abilities" that can be found in houses, example "Open presents before making your choice", "Be undetected", 
-    - Can only own one "ability" at a time
+    - Can only own/have one "ability" at a time, after use it breaks
+    - Add a function where you can obtain more objects to switch presents with when entering houses.
+    - Add a function that saves high scores.
 
 
 ^ How to program?
 
     > Random house.
-        >Could make this as a def?
+        >Could make this as a def, so that it's recallable
 
         < Make a list that saves the houses as different values
         < Assign a set of numbers to the different houses depending on their chance of being selected
@@ -48,7 +51,23 @@
         < Print and use input to see if the player wants to reroll or not
         < Make a while loop with if statement in, to check if player writes a or b, rerolls if b, goes into house if a
 
-        > Escape house
-            < Make a function for escaping or running from house - Need to research on that one
-        
-        < Create an if statement that checks if your inside or outside of house X
+            > Escape house
+                < Make a function for escaping or running from house - Need to research on that one
+
+        < When player walks out reroll house function 
+
+    > Take presents
+        < I want the 
+        < Randomly pick a number between 5-10 and take that number of presents
+        <
+
+
+        > Replace presents
+            < A list with the objects in your bag, 10 objects
+
+
+
+
+        < When and if all objects are gone, the game ends
+    
+    > End game
