@@ -15,7 +15,8 @@
 * What is the main theme?
 
     - Christmas
-    - Text based adventure/chance
+    - Text based adventure
+    - Chance
 
 * What is the goal?
 
@@ -56,14 +57,19 @@
 
         < When player walks out reroll house function 
 
-    > Take presents
-        < I want the 
-        < Randomly pick a number between 5-10 and take that number of presents
-        <
+    > Generate presents
+        < Randomly pick a number between 5-10 and generate that number of presents
+        < Generate a description and contents, with the item and its worth
+        < Collect the all the variables in a list and make it a list in a list to store both description and contents
 
+            > Take presents
+                < Pick presents according to their assigned place in the list or description
+                < Pick a object from your inventory to replace the present
 
-        > Replace presents
-            < A list with the objects in your bag, 10 objects
+            > Replace presents
+                < There is a list with 10 randomized objects
+                < Save the randomized objects in a objects inventory
+                < Select the objects by their place in the inventory list or name when choosing to replace a present
 
 
 
