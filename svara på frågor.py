@@ -5,7 +5,7 @@ def svara():
             svar = int(input("vill du fråga om provet eller egna projektet\n 1: provet \n 2:projekt \n 3:avsluta\n"))
             return svar
         except ValueError :
-            print("Nähh, det går int")
+            print("Nähh, det går int\n")
     
 gå = "s"
 
