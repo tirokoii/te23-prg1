@@ -115,7 +115,7 @@ class House:
         self.color = color
         self.description = description
         self.text_b = text_b
-    
+
 Common = [
     ["shoes", 200, 1 ],
     ["children's book", 200, 1],
@@ -137,8 +137,6 @@ Rare = [
 Legendary = [
     ["lost diamond", 10000, 4]
 ]
-
-weight = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4]
 
 '''def present_roll():
 
@@ -177,7 +175,7 @@ weight = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4]
 
     return Present.content, Present.value, Present.description'''
 
-def present_weight():
+def present_type():
 
     weight_roll = random.choice(weight)
 
@@ -199,7 +197,21 @@ def present_des():
 
     return present_description
 
-House.color = ["red", "green", "yellow", "white", "brown", "blue", "orange"]
+def present_print():
+     
+    present_amount = random.randint(3, 8)
+    x = 0
+
+    for i in range(present_amount):
+        present = present_type()
+        des = present_des()
+        present_list.append([present, des])
+    print("You can see", end=" ")
+    for item in present_list:
+        print("a " + present_list[x][1], end=" present ")
+        if x == (present_amount -1):
+            print("and " + present_list[x][1], end=" present")
+        x += 1
 
 def house_roll_rarity():
     
@@ -235,6 +247,17 @@ def input_YN(prompt, message1, message2):
             print(message2)
             return "no"
 
+def pick_present():
+    choice = input("Pick a present:\n")
+    if choice in present_list:
+        print(f"You take the {choice} present")
+
+
+present_amount = 0
+present_list = []
+weight = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4]
+items_list = ["feather", "pillow", "cat statue", "broom", "santa's helper", "cache", "pen", "witch hat", "utensils", "tooth brush", "candy", ""]
+House.color = ["red", "green", "yellow", "white", "brown", "blue", "orange"]
 
 while True:
 
@@ -262,28 +285,18 @@ while True:
 
                     if house_enter == house_one.color or house_enter == house_one.description:
                         print(f"You enter the {house_description} house...")                           
-                        
-                        present_amount = random.randint(3, 8)
-                        present_after = []
-                        x = 0
-
-                        for i in range(present_amount):
-                            present = present_weight()
-                            des = present_des()
-                            present_after.append([present, des])
-                        print("You can see", end=" ")
-                        for item in present_after:
-                            print("a " + present_after[x][1], end=" present ")
-                            x += 1
 
                         house_choice = input_YN("\nDo you want to leave the house?[Y/N]\n", "Okay, leave then", "Okay, stay")
 
-                        if house_choice.lower == "n" or house_choice.lower == "no":
-                            choice = input_YN("Do you want to take a present?[Y/N] \n", "Okay, then pick a present\n", "Okay, leave then" )
-                        elif house_choice.lower == "y" or house_choice.lower == "yes":
+                        present_print()
+
+                        if house_choice == "no":
+                            choice = input_YN("Do you want to take a present?[Y/N] \n", "Okay, then pick a present\n",  "Okay, leave then")
+                                
+                        elif house_choice == "yes":
                             break
                         else:
-                            print("You can not")
+                            print("Can you not")
                             
                     elif house_choice == house_one.color or house_enter == house_two.description:
                         print("Hello")

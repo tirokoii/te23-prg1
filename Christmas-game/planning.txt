@@ -63,17 +63,17 @@
         < Collect the all the variables in a list and make it a list in a list to store both description and contents
 
             > Take presents
-                < Pick presents according to their assigned place in the list or description
-                < Pick a object from your inventory to replace the present
-
+                < Randomize amount of presents from 1-5
+                < Save presents
+                < Print the presents descriptions and let player choose presents - can only choose 3 presents max
+                < Check if present description is in the saved presents
+                < Take out present depending on its description
             > Replace presents
-                < There is a list with 10 randomized objects
-                < Save the randomized objects in a objects inventory
-                < Select the objects by their place in the inventory list or name when choosing to replace a present
+                < Pick a item from inventory to replace the present
+                < Replace item with present - make it so that the player can't switch it out
 
 
 
-
-        < When and if all objects are gone, the game ends
+        < When and if all objects from inventory is gone or player chooses to save items, the game ends
     
     > End game
