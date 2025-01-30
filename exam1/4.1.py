@@ -1,30 +1,14 @@
-#Ett program som läser in ett godtyckligt antal positiva tal
-#När användaren skriver ett negativt tal ska programmet skriva ut det största och minsta av de positiva talen
-from random import randint
+största = 0
+minsta = 10e100000
 
 while True:
-    tal = int(input("Vad är ditt tal? "))
+    tal = float(input("Skriv in ett tal: "))
     if tal < 0:
-        print("Error")
-    else:
-        break
+        print(f"Största: {största}\nMinsta: {minsta}\n")
+    elif tal > största:
+        största = tal
 
+    elif tal < minsta:
+        minsta = tal
 
-n = int(input("Skriv ett negativt tal för att ta ut största och minsta talet i din talordning "))
-print("")
-x = 0
-plusTal = randint(1, 20)
-
-if n < 0:
-    for i in range(1, 9):
-        tal += plusTal
-        x += 1
-        if x == 1:
-            print(f"Minsta: {tal}", end=", ")
-        elif x == 8:
-            print("största:", tal) 
-else:
-    for i in range(1, 9):
-        tal += plusTal
-        print(tal, end=", ")
-            
+#Tog hjälp av internet, för att förstå - inte för att vissa kunskaper
