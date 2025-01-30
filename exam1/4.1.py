@@ -11,4 +11,4 @@ while True:
     elif tal < minsta:
         minsta = tal
 
-#Tog hjälp av internet, för att förstå - inte för att vissa kunskaper
+#Tog hjälp av internet, för att förstå - inte för att visa kunskaper
