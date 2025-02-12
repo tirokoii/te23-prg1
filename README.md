@@ -1,11 +1,15 @@
 Python programing 
 
+
+
 Olika sätt att skriva ut variabler på:
 
 snake_case, 
 camelCase, 
 kebab-case, 
 PascalCase
+
+
 
 Ord/tecken
 
@@ -50,9 +54,11 @@ isdigit --> ser till så att det bara är nummer som skrivs in av användaren
 
 f: --> gör det möjligt för en print att hålla variabler
 
-float --> allows decimals
+float --> tillåter decimaler
 
-:.2f --> sets decimal to a maximum of 2
+:.2f --> sätter decimaler till max 2
+
+:4d --> sätter ett avstånd mellan utskrifter (for-loop, end="")
 
 {exempel:5} --> gör radavstånd
 
@@ -64,6 +70,7 @@ stdin --> Standard input --> Gör om till input
 
 rstrip() --> Removes all trailing characters, default is space
 
+end="" --> Kan användas för att placera en eller flera utskrifter på samma rad
 
 
 Uttryck

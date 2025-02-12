@@ -17,8 +17,8 @@ def take_present():
             if choice in presents[x][1]:
                 print("yay")
                 present = choice
-                for present in presents:
-                    presents_inventory.append(present)
+                presents_inventory.append(present)
+                for i in presents:
                     if choice == presents[x][1]:
                         for i in inventory:
                             print(inventory[z])

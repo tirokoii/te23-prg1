@@ -256,7 +256,7 @@ def pick_present():
 present_amount = 0
 present_list = []
 weight = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4]
-items_list = ["feather", "pillow", "cat statue", "broom", "santa's helper", "cache", "pen", "witch hat", "utensils", "tooth brush", "candy", ""]
+items_list = ["feather", "pillow", "cat statue", "broom", "santa's helper", "cache", "pen", "witch hat", "utensils", "tooth brush", "candy"]
 House.color = ["red", "green", "yellow", "white", "brown", "blue", "orange"]
 
 while True:

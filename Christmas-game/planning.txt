@@ -14,14 +14,15 @@
 
 * What is the main theme?
 
-    - Christmas
-    - Text based adventure
+    - Christmas - red / green / jolly
+    - Grinch - funny text lines
+    - Text based adventure - environment descriptions
     - Chance
 
 * What is the goal?
 
     - Get the highest score in the end of the game, by collecting the most priced presents
-    - Steal and replace presents with other objects, you start with 10 objects
+    - Steal and replace presents with other objects, you start with 10 random objects
 
 * What is the game mechanics?
 
