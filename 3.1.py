@@ -1,6 +1,14 @@
 from math import pi
 
-radie = float(input("Vad är cirkelns radie? "))
+def ärfloat(floaty):
+    while True :
+        try :
+            radie = float(input(floaty))
+            return radie
+        except ValueError :
+            print("En bokstav är ingen siffra")
+
+radie = ärfloat("Vad är cirkelns radie? ")
 
 
 if  radie <= 0:
