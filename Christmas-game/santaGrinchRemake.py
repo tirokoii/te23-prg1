@@ -1,6 +1,7 @@
 import random
 inventory_list = ["feather", "pillow", "cat statue", "broom", "santa's helper", "cache", "pen", "witch hat", "utensils", "tooth brush", "candy", "lamp", "monkey paw", "calculator", "tea", "broom", "wig"]
 inventory = []
+present_inventory = []
 
 for i in range(1, 11):
     item = random.choice(inventory_list)
@@ -41,8 +42,9 @@ legendary = [
 
 present_description = ["red", "blue", "green", "pink", "dotted", "striped", "heart", "long", "short", "big", "small"]
 weight = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4]
-
+        
 def presentsWhole():
+
     present_amount = random.randint(2, 4)
 
     weight_roll = random.choice(weight)
@@ -62,44 +64,45 @@ def presentsWhole():
     elif present_amount == 2:
         present_one = Present(random.choice(present_description), present[0], present[1])
         present_two = Present(random.choice(present_description), present[0], present[1])
-        print(f"There are two items in the room, a {present_one.description} and a {present_two.description} present")
+        print(f"There are two items in the room, a {present_one.description} present and a {present_two.description} present")
     elif present_amount == 3:
         present_one = Present(random.choice(present_description), present[0], present[1])
         present_two = Present(random.choice(present_description), present[0], present[1])
         present_three = Present(random.choice(present_description), present[0], present[1])
-        print(f"There are three items in the room, a {present_one.description}, a {present_two.description} and a {present_three.description} present")
+        print(f"There are three items in the room, a {present_one.description} present, a {present_two.description} present and a {present_three.description} present")
     else:
         present_one = Present(random.choice(present_description), present[0], present[1])
         present_two = Present(random.choice(present_description), present[0], present[1])
         present_three = Present(random.choice(present_description), present[0], present[1])
         present_four = Present(random.choice(present_description), present[0], present[1])
-        print(f"There are three items in the room, a {present_one.description}, a {present_two.description}, a {present_three.description} and a {present_four.description} present")
+        print(f"There are three items in the room, a {present_one.description} present, a {present_two.description} present, a {present_three.description} present and a {present_four.description} present")
+    
 
     x = 1
     i = 0
     present_loop = True
-    present_inventory = []
     while present_loop == True:
         while present_amount > 0:
             choice = input("Which present do you want to take? ")
-            if choice.lower() == present_one.description:
+            if choice.lower() == present_one.description or present_one.description + "present":
                 print("Choose an item to replace the present: \n")
-                print("Inventory\n")
+                print("\nInventory\n")
                 for item in inventory:
                     print(f"{x}. {item}")
                     x += 1
                 choice = input("Item: ")
                 while True:
-                    if choice in inventory[i] or choice == i + 1:
+                    if choice in inventory[i] or choice == str(i + 1):
                         print(f"Exchanging the {inventory[i]} for the {present_one.description} present")
                         present_inventory.append(present_one)
                         del inventory[i]
                         break
                     i += 1
                 present_loop = False
+                break
             elif choice == present_two.description:
                 print("Choose an item to replace the present: \n")
-                print("Inventory\n")
+                print("\nInventory\n")
                 for item in inventory:
                     print(f"{x}. {item}")
                     x += 1
@@ -114,7 +117,7 @@ def presentsWhole():
                 present_loop = False
             elif choice == present_three.description:
                 print("Choose an item to replace the present: \n")
-                print("Inventory\n")
+                print("\nInventory\n")
                 for item in inventory:
                     print(f"{x}. {item}")
                     x += 1
@@ -129,7 +132,7 @@ def presentsWhole():
                 present_loop = False
             elif choice == present_four.description:
                 print("Choose an item to replace the present: \n")
-                print("Inventory\n")
+                print("\nInventory\n")
                 for item in inventory:
                     print(f"{x}. {item}")
                     x += 1
@@ -180,6 +183,7 @@ while True:
         choice = input("Which house do you want to enter? ")
         if choice.lower() == house_one.color or house_one.description or house_one.color and house_one.description:
             while True:
+                print(f"Entering the {choice}")
                 choice = input("Are you sure you want to take presents from this house? [y/n] ")
                 if choice.lower == "yes" or "y":
                     while True:

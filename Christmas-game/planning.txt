@@ -58,6 +58,9 @@
 
         < When player walks out reroll house function 
 
+        < When first present is chosen, it prints out the presents left (not generate new ones). Somehow I need to separate 
+        the printing and the randomizing. Or create a condition that makes it so that if i already have present descriptions 
+        it prints those and jumps over the randomizing
     > Generate presents
         < Randomly pick a number between 5-10 and generate that number of presents
         < Generate a description and contents, with the item and its worth

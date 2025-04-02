@@ -72,11 +72,22 @@ rstrip() --> Removes all trailing characters, default is space
 
 end="" --> Kan användas för att placera en eller flera utskrifter på samma rad
 
+from <--filnamn--> import <-variabelnamn-> as BOOK --> importera filer till en annan
+
+def ...(prompt) --> prompt är ett argument och ... en definition av en funktion
+
+return int(input(...)) --> Visar ... för användaren och konverterar användarens inmatning till ett heltal
+
+return --> ...
+
+enumerate --> ...
+
+
 
 Uttryck
 
 
-artimetiska uttryck --> ett resultat som har en numeriskt värde, går på matematiksa regles
+artimetiska uttryck --> ett resultat som har en numeriskt värde, går på matematiksa regler
 
 artemetiska operatorer --> +, -, * och / 
 
