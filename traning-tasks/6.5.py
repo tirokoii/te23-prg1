@@ -1,20 +1,25 @@
 # Calculate (Standardavikelse) for a couple of values
 # The numbers should be in a list
-# The formula: o = squrt((1/n)*sum(n)*(x - medel)(x - medel))
+# The formula: o = (sum(x - mid)^2)/n
 # x = numbers
 
 from math import sqrt
 
-x = []
+number_list = []
 
-while len(x) < 10:
-    x.append(int(input('skriv in ett värde: ')))
+while len(number_list) < 5:
+    number_list.append(int(input("Skriv in ditt tal: ")))
+number_list.sort
 
-f = 0
-total = 0
-while True:
-    for i in x:
-        total += i
-        f += (1/i)*sum(i)
-    mid = total/len(x)  
-    o = sqrt(f*(x -mid)(x - mid))
+x = 0
+
+for n in number_list:
+    x += n
+mid = x/len(number_list)
+
+sum_list = []
+for n in number_list:
+    sum_list.append(((n-mid)*(n-mid))/len(number_list))
+
+print(f"{sqrt(sum(sum_list)):.2f}")
+    
