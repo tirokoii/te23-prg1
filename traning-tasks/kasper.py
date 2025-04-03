@@ -14,13 +14,14 @@
 
 #Option nr 2 - char
 #Assign a seat to each character
-
+from random import shuffle
 count = 0
 nameListCount = -1
 countList = []
 playerCountList = []
 countList11 = ["11", "111", "211", "311" ]
 characters = ["Henke", "Ash", "Billy", "Rasmus", "Jens", "player"]
+shuffle(characters)
 #list = [0, 1, 2, 3, 4]
 
 while True:
@@ -52,6 +53,12 @@ while True:
                 print(f"{name}: clap")
                 countList.clear()
                 playerCountList.clear()
+            elif "clap" in playerChoice and (int(count) % 7 != 0) or (int(count % 11 != 0)) and "7" in countList or countList11 in countList:
+                print(f"{name}: clap")
+                print("Wrong!")
+                countList.clear()
+                playerCountList.clear()
+                count = 0
             else:
                 print("What?")
                 countList.clear()
