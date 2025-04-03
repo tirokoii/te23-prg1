@@ -1,7 +1,7 @@
-# Calculate (Standardavikelse) for a couple of values
-# The numbers should be in a list
-# The formula: o = (sum(x - mid)^2)/n
-# x = numbers
+# Beräkna Standardavikelse för ett antal värden
+# Nummren ska vara i en lista
+# Ekvationen: o = (sum(x - mid)^2)/n
+# x = nummer
 
 from math import sqrt
 

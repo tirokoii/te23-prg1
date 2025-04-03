@@ -1,6 +1,6 @@
-# Stations assinged with seperate temperature
-# Print out the (medel temperatur)
-# Print stations with higher temprature then the (medel temperatur)
+# Stastioner med angivna temperaturer
+# Print ut medel temperatur
+# Print stationerna med högsta temperaturer och sedan medel temperatur
 
 temp = [10, 40, 19, 28, -27, -31, 24, 18, -28]
 amount = 0
