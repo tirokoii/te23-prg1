@@ -60,13 +60,15 @@ def printPresent():
         print("There are no more presents")
     
 house_color_list = ["red", "green", "yellow", "white", "brown", "blue", "orange"]
+house_roll = True
 
-while True:
-    de_range = random.randint(1, 100)
 
+
+while house_roll == True:
     for i in range(0, 2):
+        de_range = random.randint(1, 100)
         if de_range < 20:
-                house_description = "old"
+            house_description = "old"
         elif de_range < 40:
             house_description = "swedish"
         elif de_range < 55:
@@ -99,135 +101,167 @@ while True:
     else:
         present = random.choice(legendary)
     
-    if present_amount == 1:
-        present_one = Present(random.choice(present_description), present[0], present[1])
-    elif present_amount == 2:
-        present_one = Present(random.choice(present_description), present[0], present[1])
-        present_two = Present(random.choice(present_description), present[0], present[1])
-    elif present_amount == 3:
-        present_one = Present(random.choice(present_description), present[0], present[1])
-        present_two = Present(random.choice(present_description), present[0], present[1])
-        present_three = Present(random.choice(present_description), present[0], present[1])
-    else:
-        present_one = Present(random.choice(present_description), present[0], present[1])
-        present_two = Present(random.choice(present_description), present[0], present[1])
-        present_three = Present(random.choice(present_description), present[0], present[1])
-        present_four = Present(random.choice(present_description), present[0], present[1])
-    
-    again = False
+    present_one = Present(random.choice(present_description), present[0], present[1])
+    present_two = Present(random.choice(present_description), present[0], present[1])
+    present_three = Present(random.choice(present_description), present[0], present[1])
+    present_four = Present(random.choice(present_description), present[0], present[1])
+
+    again = True
     inside = True
-    while inside == True:
+    house = True
+
+    while again == True:
+        if len(inventory) == 0:
+            inside = False
+            house = False
+            again = False
+            house_roll = False
         printHouse()
         choice = input("Which house do you want to enter? ")
-        if choice.lower() == house_one.color or choice.lower() == house_one.description or choice.lower() == house_one.color + " "+ house_one.description or choice.lower() == house_one.color + " " + house_one.description + " " + "house":
-            while True:
-                print(f"Entering the {choice}")
+        if choice.lower() == house_one.color or choice.lower() == house_one.color + " " + "house" or choice.lower() == house_one.color + " " + house_one.description  or choice.lower() == house_one.color + " " + house_one.description + " " + "house":
+            while house == True:
+                choice = choice + " 1"
+                if str.split(choice)[1] == "1":
+                    print(f"Entering the {str.split(choice)[0]} house")
+                else:
+                    print(f"Entering the {str.split(choice)[0]} {str.split(choice)[1]} house")
                 choice = input("Are you sure you want to take presents from this house? [y/n] ")
-                if choice.lower == "yes" or "y":
-                    while True:
+                if choice.lower() == "yes" or choice.lower() == "y":
+                    while inside == True:
                         printPresent()
                         if present_amount == 0:
                             inside = False
                         x = 1
                         i = 0
                         present_loop = True
-                        while present_loop == True:
-                            while present_amount > 0:
-                                choice = input("Which present do you want to take? ")
-                                if choice.lower() == present_one.description or choice.lower() == present_one.description + " " + "present":
-                                    print("Choose an item to replace the present: \n")
-                                    print("\nInventory\n")
-                                    for item in inventory:
-                                        print(f"{x}. {item}")
-                                        x += 1
-                                    choice = input("Item: ")
-                                    while True:
-                                        if choice in inventory[i] or choice == str(i + 1):
-                                            print(f"Exchanging the {inventory[i]} for the {present_one.description} present")
-                                            present_inventory.append(present_one)
-                                            present_amount -= 1
-                                            if present_amount == 1:
-                                                present_one = present_two
-                                            elif present_amount == 2:
-                                                present_one = present_two
-                                                present_two = present_three
-                                            elif present_amount == 3:
-                                                present_one = present_two
-                                                present_two = present_three
-                                                present_three = present_four
-                                            del inventory[i]
-                                            break
-                                        i += 1
-                                    present_loop = False
-                                    break
-                                elif choice == present_two.description or choice.lower() == present_two.description + " " + "present":
-                                    print("Choose an item to replace the present: \n")
-                                    print("\nInventory\n")
-                                    for item in inventory:
-                                        print(f"{x}. {item}")
-                                        x += 1
-                                    choice = input("Item: ")
-                                    while True:
-                                        if int(choice) == i + 1 or choice.lower() in inventory[i]:
-                                            print(f"Exchanging the {inventory[i]} for a {present_two.description} present")
-                                            present_inventory.append(present_two)
-                                            present_amount -= 1
-                                            if present_amount == 2:
-                                                present_two = present_three
-                                            elif present_amount == 3:
-                                                present_two = present_three
-                                                present_three = present_four
-                                            del inventory[i]
-                                            break
-                                        i += 1
-                                    present_loop = False
-                                elif choice == present_three.description or choice.lower() == present_three.description + " " + "present":
-                                    print("Choose an item to replace the present: \n")
-                                    print("\nInventory\n")
-                                    for item in inventory:
-                                        print(f"{x}. {item}")
-                                        x += 1
-                                    choice = input("Item: ")
-                                    while True:
-                                        if choice in inventory[i] or choice == i + 1:
-                                            print(f"Exchanging the {inventory[i]} for a {present_three.description} present")
-                                            present_inventory.append(present_three)                                               
-                                            present_amount -= 1
-                                            if present_amount == 3:
-                                                present_three = present_four
-                                            del inventory[i]
-                                            break
-                                        i += 1
-                                    present_loop = False
-                                elif choice.lower() == present_four.description or choice.lower() == present_four.description + " " + "present":
-                                    print("Choose an item to replace the present: \n")
-                                    print("\nInventory\n")
-                                    for item in inventory:
-                                        print(f"{x}. {item}")
-                                        x += 1
-                                    choice = input("Item: ")
-                                    while True:
-                                        if choice.lower() in inventory[i] or choice == i + 1:
-                                            print(f"Exchanging the {inventory[i]} for a {present_four.description} present")
-                                            present_inventory.append(present_four)
-                                            del inventory[i]
-                                            break
-                                        i += 1
-                                    present_loop = False
-                                else:
-                                    print("You may have spelled it wrong, try again")
+                        while present_loop == True and present_amount > 0:
+                            choice = input("Which present do you want to take? ")
+                    
+                            if choice.lower() == present_one.description or choice.lower() == present_one.description + " " + "present":
+                                print("Choose an item to replace the present: \n")
+                                print("\nInventory\n")
+                                for item in inventory:
+                                    print(f"{x}. {item}")
+                                    x += 1
+                                choice = input("Item: ")
+
+                                while True:
+                                    if choice in inventory[i] or choice == str(i + 1):
+                                        print(f"Exchanging the {inventory[i]} for the {present_one.description} present")
+                                        present_inventory.append(present_one)
+                                        present_amount -= 1
+                                        if present_amount == 1:
+                                            present_one = present_two
+                                        elif present_amount == 2:
+                                            present_one = present_two
+                                            present_two = present_three
+                                        elif present_amount == 3:
+                                            present_one = present_two
+                                            present_two = present_three
+                                            present_three = present_four
+                                        del inventory[i]
+                                        break
+                                    i += 1
+                                present_loop = False
+                                break
+                            elif choice == present_two.description or choice.lower() == present_two.description + " " + "present":
+                                print("Choose an item to replace the present: \n")
+                                print("\nInventory\n")
+                                for item in inventory:
+                                    print(f"{x}. {item}")
+                                    x += 1
+                                choice = input("Item: ")
+                                while True:
+                                    if choice in inventory[i] or choice == str(i + 1):
+                                        print(f"Exchanging the {inventory[i]} for the {present_two.description} present")
+                                        present_inventory.append(present_two)
+                                        present_amount -= 1
+                                        if present_amount == 2:
+                                            present_two = present_three
+                                        elif present_amount == 3:
+                                            present_two = present_three
+                                            present_three = present_four
+                                        del inventory[i]
+                                        break
+                                    i += 1
+                                present_loop = False
+                            elif choice == present_three.description or choice.lower() == present_three.description + " " + "present":
+                                print("Choose an item to replace the present: \n")
+                                print("\nInventory\n")
+                                for item in inventory:
+                                    print(f"{x}. {item}")
+                                    x += 1
+                                choice = input("Item: ")
+                                while True:
+                                    if choice in inventory[i] or choice == str(i + 1):
+                                        print(f"Exchanging the {inventory[i]} for a {present_three.description} present")
+                                        present_inventory.append(present_three)                                               
+                                        present_amount -= 1
+                                        if present_amount == 3:
+                                            present_three = present_four
+                                        del inventory[i]
+                                        break
+                                    i += 1
+                                present_loop = False
+                            elif choice.lower() == present_four.description or choice.lower() == present_four.description + " " + "present":
+                                print("Choose an item to replace the present: \n")
+                                print("\nInventory\n")
+                                for item in inventory:
+                                    print(f"{x}. {item}")
+                                    x += 1
+                                choice = input("Item: ")
+                                while True:
+                                    if choice in inventory[i] or choice == str(i + 1):
+                                        print(f"Exchanging the {inventory[i]} for a {present_four.description} present")
+                                        present_inventory.append(present_four)
+                                        del inventory[i]
+                                        break
+                                    i += 1
+                                present_loop = False
+                            else:
+                                print("You may have spelled it wrong, try again")
                         while True:
                             choice = input("Do you want to take another present? [y/n] ")
                             if choice.lower() == "y" or choice.lower() == "yes":
-                                
+                                if len(inventory) == 0:
+                                    inside = False
+                                    house = False
+                                    again = False
+                                    house_roll = False
+                                if present_amount == 0:
+                                    print("You are now leaving the house")
+                                    inside = False
+                                    house = False
+                                    again = False
                                 break
                             elif choice.lower() == "n" or choice.lower() == "no":
                                 break
                             else:
                                 print("Try writing yes, y, n or no.")
-                        
-        elif choice.lower() == house_two.color or choice.lower() == house_two.description or choice.lower() == house_two.color + house_two.description or choice.lower() == house_two.color + " " + house_two.description + " " + "house":
+                elif choice.lower() == "no" or choice.lower() == "n":
+                    print("You walk right back out...")
+                    house = False
+                else:
+                    print("Seems you have written something wrong")
+
+
+                    
+        elif choice.lower() == house_two.color or choice.lower() == house_two.color + " " + "house" or choice.lower() == house_two.color + " " + house_two.description  or choice.lower() == house_two.color + " " + house_two.description + " " + "house":
             print("Nice")
         else:
             print("Hmm, seems we don't have that house...")
-    
+
+print("You don't have anymore items to exchange presents for")
+print("Calculating the worth of your presents")
+x = 0
+earned = 0
+for i in present_inventory:
+    print(f"{i.item}: {i.worth}")
+    x += 1
+    earned += i.worth
+    if x > 9:
+        break
+    else:
+        i = present_inventory[x]
+print(f"You earned: {earned}")
+print("Thank you for playing!")
