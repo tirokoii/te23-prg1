@@ -4,7 +4,7 @@ inventory_list = ["feather", "pillow", "cat statue", "broom", "santa's helper", 
 inventory = []
 present_inventory = []
 
-for i in range(1, 11):
+for i in range(1, 3):
     item = random.choice(inventory_list)
     inventory.append(item)
 
@@ -60,11 +60,14 @@ def printPresent():
         print("There are no more presents")
     
 house_color_list = ["red", "green", "yellow", "white", "brown", "blue", "orange"]
-house_roll = True
+game = True
 
 
+print("Welcome to SantaGrinch!")
+print("You are the Grinch out to destroy christmas, just because one christmas was bad. But instead of stealing all the presents you exchange them for items from your own home.")
+print("Good luck!\n")
 
-while house_roll == True:
+while game == True:
     for i in range(0, 2):
         de_range = random.randint(1, 100)
         if de_range < 20:
@@ -109,13 +112,16 @@ while house_roll == True:
     again = True
     inside = True
     house = True
-
+    
     while again == True:
+        house = True
+        inside = True
+        again = True
         if len(inventory) == 0:
             inside = False
             house = False
             again = False
-            house_roll = False
+            game = False
         printHouse()
         choice = input("Which house do you want to enter? ")
         if choice.lower() == house_one.color or choice.lower() == house_one.color + " " + "house" or choice.lower() == house_one.color + " " + house_one.description  or choice.lower() == house_one.color + " " + house_one.description + " " + "house":
@@ -227,7 +233,7 @@ while house_roll == True:
                                     inside = False
                                     house = False
                                     again = False
-                                    house_roll = False
+                                    game = False
                                 if present_amount == 0:
                                     print("You are now leaving the house")
                                     inside = False
@@ -235,6 +241,9 @@ while house_roll == True:
                                     again = False
                                 break
                             elif choice.lower() == "n" or choice.lower() == "no":
+                                inside = False
+                                house = False
+                                again = False
                                 break
                             else:
                                 print("Try writing yes, y, n or no.")
@@ -243,25 +252,35 @@ while house_roll == True:
                     house = False
                 else:
                     print("Seems you have written something wrong")
-
-
                     
         elif choice.lower() == house_two.color or choice.lower() == house_two.color + " " + "house" or choice.lower() == house_two.color + " " + house_two.description  or choice.lower() == house_two.color + " " + house_two.description + " " + "house":
             print("Nice")
         else:
             print("Hmm, seems we don't have that house...")
 
-print("You don't have anymore items to exchange presents for")
-print("Calculating the worth of your presents")
+print("\n\nYou don't have anymore items to exchange presents for")
+print("Calculating the worth of your presents...\n")
+print("Items in presents:")
 x = 0
 earned = 0
 for i in present_inventory:
     print(f"{i.item}: {i.worth}")
     x += 1
     earned += i.worth
-    if x > 9:
+    if x > 1:
         break
     else:
         i = present_inventory[x]
-print(f"You earned: {earned}")
+
+with open("score.txt", "a+") as scores:
+    scores.write(f"{earned}\n")
+
+with open("score.txt", "r") as scores:
+    score_list = scores.readlines()
+
+int_list = [int(n) for n in score_list]
+hs = max(int_list)
+print(hs)
+
+print(f"\nYou earned: {earned}\n")
 print("Thank you for playing!")
