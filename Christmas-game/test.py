@@ -35,7 +35,7 @@ def take_present():
 
 take_present()'''
 
-class Present:
+'''class Present:
     def __init__(self, description, item, worth):
         self.description = description
         self.item = item
@@ -116,4 +116,7 @@ for i in present_inventory:
 for i in present_inventory_two:
     print(f"{i.item}: {i.worth}")
     x += 1
-    i = present_inventory[x]
+    i = present_inventory[x]'''
+x = 1
+y = str(x + 1)
+print(str(x + 1))
