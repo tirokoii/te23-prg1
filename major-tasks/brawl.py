@@ -54,11 +54,12 @@ while game == True:
     randomWeapon = ["sword", "gummi duck", "axe", "bone", "Spear", "cat", "lollipop", "shield", "pistol", "hammer", "scythe", "bow"]
     weapon = random.choice(randomWeapon)
     yesNo = ["yes", "no"]
-    roleChoiceOne = 0
-    roleChoiceTwo = 0
+    roleChoiceOne = 1
+    roleChoiceTwo = 1
     roleWrong = True
     playerOneCharges = 10
     playerTwoCharges = 10
+    ynList = ["no", "yes"]
 
     while True:
 
@@ -97,7 +98,7 @@ while game == True:
 
 
 
-    while roleChoiceOne == 0:
+    while roleChoiceOne == 1:
 
         print(Fore.WHITE + "\nPlayer 1 do you want to choose an class? yes/no")
         roleChoiceOne = input(Fore.CYAN + "")
@@ -128,17 +129,16 @@ while game == True:
                             break
                         else:
                             print(Fore.RED + "Not a valid class.\n")
-                            time.sleep(1)
+                            time.sleep(0.1)
 
                 elif roleChoiceOne.lower() == "no" or roleChoiceOne.lower() == "n":
                     roleChoiceOne = "none"
                 break
         else:
             print(Fore.RED + "Please write yes, no, n or y")
-            roleChoiceOne = 0
 
 
-    while roleChoiceTwo == 0:
+    while roleChoiceTwo == 1:
 
         if playerTwo == True:
             print(Fore.WHITE + "\nPlayer 2 do you want to choose an class? yes/no")
@@ -173,7 +173,8 @@ while game == True:
                         break
             else:
                 print(Fore.RED + "Please write yes or no")
-                roleChoiceTwo = 0
+        else:
+            roleChoiceTwo = "none"
 
     while playGame.lower() == "yes" or playGame.lower() == "y":
 
@@ -304,7 +305,7 @@ while game == True:
                         print(Fore.RED + f"{playerTwoName} fails to steal from the opponent")
                     else:
                         print(f"The bandit {playerTwoName} was scared by the thought of stealing.")
-
+            
             def roleYN():
 
                 playerOneLife = 10
@@ -320,6 +321,7 @@ while game == True:
                 priestHealTwo = randint(1, 10) 
                 knightBlockTwo = randint(1, 10)
                 banditStealTwo = randint(1, 10)
+
 
                 if roleChoiceOne.lower() == "priest" or roleChoiceOne.lower() == "p":
                     if priestHealOne == 2:
@@ -385,7 +387,7 @@ while game == True:
                 banditStealTwo = randint(1, 10)
 
                 if roleChoiceTwo.lower() == "priest" or roleChoiceTwo.lower() == "p":
-                    if priestHealTwo == 2:
+                    if priestHealOne == 2:
                             print(Fore.LIGHTMAGENTA_EX + f"{playerTwoName} is attempting to put up an healing spell")
                             print(f"A giant array begins to glow beneath {playerTwoName}'s feet! \n")
                             playerTwoLife += 1
@@ -397,7 +399,7 @@ while game == True:
                         print(Fore.RED + f"Oh no, {playerTwoName} failed to heal them self, they instead healed the opponent.")
                         print(Fore.LIGHTMAGENTA_EX + f"{playerOneName} now has {playerOneLife} lives")
                     else:
-                        print(f"{playerTwoName} didn't hav enough power to heal.")
+                        print(f"{playerTwoName} didn't have enough power to heal.")
 
                 elif roleChoiceTwo.lower() == "knight" or roleChoiceTwo.lower() == "k":
                     if playerTwoRoll > playerOneRoll:
@@ -439,18 +441,38 @@ while game == True:
                 time.sleep(1)
                 print(Fore.WHITE + f"{playerOneName} begins to charge against {playerTwoName} with an {weapon} in their hand!") 
                 time.sleep(0.5)
-                print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges?")
-                playerOneChargeDecide = input(Fore.CYAN + "")
 
-                print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges?")
-                playerTwoChargeDecide = input(Fore.LIGHTMAGENTA_EX + "")
+                while True:
+                    print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges? (y/n)")
+                    playerOneChargeDecide = input(Fore.CYAN + "")
+                    if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" or playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n":
+                        break
+                    else:
+                        print("Please write one of following y/n/yes/no)")
+                while True:
+                    if "computer" not in playerTwoName:
+                        print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges? (y/n)")
+                        playerTwoChargeDecide = input(Fore.LIGHTMAGENTA_EX + "")
+                    else:
+                        playerTwoChargeDecide = random.choice(ynList)
+                        print(Fore.LIGHTMAGENTA_EX + "computers choice: " + playerTwoChargeDecide + Fore.WHITE + "\n")
+                        time.sleep(1)
+                    if playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y" or playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                        break
+                    else:
+                        print("Please write one of following y/n/yes/no)")
+
 
                 if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
                      roleYY()
+                     playerOneCharges -= 1
+                     playerTwoCharges -= 1
                 elif playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
                     roleYN()
+                    playerOneCharges -= 1
                 elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
                     roleNY()
+                    playerTwoCharges -= 1
                 elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
                     print("Ok...")
                     time.sleep(1)
@@ -480,18 +502,36 @@ while game == True:
                 
                 print(Fore.WHITE + f"{playerTwoName} begins to charge against {playerOneName} with an {weapon} in their hand!")
 
-                print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges?")
-                playerOneChargeDecide = input(Fore.CYAN + "")
-
-                print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges?")
-                playerTwoChargeDecide = input(Fore.LIGHTMAGENTA_EX + "")
+                while True:
+                    print(Fore.WHITE + f"Does {playerOneName} want to use one of their {playerOneCharges} charges? (y/n)")
+                    playerOneChargeDecide = input(Fore.CYAN + "")
+                    if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" or playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n":
+                        break
+                    else:
+                        print("Please write one of following y/n/yes/no)")
+                while True:
+                    if "computer" not in playerTwoName:
+                        print(Fore.WHITE + f"Does {playerTwoName} want to use one of their {playerTwoCharges} charges? (y/n)")
+                        playerTwoChargeDecide = input(Fore.LIGHTMAGENTA_EX + "")
+                    else:
+                        playerTwoChargeDecide = random.choice(ynList)
+                        print(Fore.LIGHTMAGENTA_EX + "computers choice: " + playerTwoChargeDecide + Fore.WHITE + "\n")
+                        time.sleep(1)
+                    if playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y" or playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
+                        break
+                    else:
+                        print("Please write one of following y/n/yes/no)")
 
                 if playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
-                     roleYN(roleNY())
+                     roleYY()
+                     playerOneCharges -= 1
+                     playerTwoCharges -= 1
                 elif playerOneChargeDecide.lower() == "yes" or playerOneChargeDecide.lower() == "y" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
                     roleYN()
+                    playerOneCharges -= 1
                 elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "yes" or playerTwoChargeDecide.lower() == "y":
                     roleNY()
+                    playerTwoCharges -= 1
                 elif playerOneChargeDecide.lower() == "no" or playerOneChargeDecide.lower() == "n" and playerTwoChargeDecide.lower() == "no" or playerTwoChargeDecide.lower() == "n":
                     print("Ok...")
                     time.sleep(1)
@@ -521,12 +561,12 @@ while game == True:
             if playerOneLife == 0:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
-                game = False
+                playGame = "no"
                 break
             elif playerTwoLife == 0:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
-                game = False
+                playGame = "no"
                 break
 
 playGame = input("Would you like to play again? yes/no: ")
