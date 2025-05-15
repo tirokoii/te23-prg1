@@ -44,8 +44,8 @@ while game == True:
 
     playerTwo = False
 
-    playerOneLife = 10
-    playerTwoLife = 10
+    playerOneLife = 5
+    playerTwoLife = 5
 
 
     gameRound = 0
@@ -562,11 +562,13 @@ while game == True:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
                 playGame = "no"
+                game = False
                 break
             elif playerTwoLife == 0:
                 print(f"In a harsh battle between two masters {playerOneName} persisted and rose the victory flag. Congratulations to your victory over {playerTwoName}!")
                 print(f"{playerOneName} you are now officially better then {playerTwoName}")
                 playGame = "no"
+                game = False
                 break
 
 playGame = input("Would you like to play again? yes/no: ")
