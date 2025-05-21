@@ -1,0 +1,42 @@
+What?
+
+Battle ship game
+
+4 boards with a 9 x 9 space, which the players can place 5 different pieces of ships
+Hunter (take up 2 spaces)
+Submarine (takes up 3 spaces)
+Cruiser (takes up 3 spaces)
+Battleship (takes up 4 spaces)
+Carrier (takes up 5 spaces)
+
+How?
+
+First boards to play on, two per player, (player 1 playing board and player 1 hit board...)
+Someway to enable the players to place their ships
+A timer or switch of some kind to change turns
+Someway to enable the players to hit and miss locations on the boards
+Record the misses and hits on both players boards
+
+
+Efficiency
+
+Make it so that I don't have to write the code double for both players. (def?)
+
+Code
+
+A two dimensional list with x and y coordinates for the boards, with variable names, 
+player_one_board, player_one_record, player_two_board, player_two_record
+
+Ships with names a input that asks the player for a position
+An def that checks the input from the user and if its valid, by checking if the list location and its corresponding surrounding tiles are free
+
+Set either a timer and a text or input that asks the current player change
+
+A set of if-statements that checks if any ships are hit on the opponents board and marks them on their check boards, can check by assigning hits, misses, occupied and unoccupied spaces with numbers or letters.
+hits = "h" 
+misses = "m"
+occupied = corresponding number for the ships
+unoccupied = 0
+
+
+
